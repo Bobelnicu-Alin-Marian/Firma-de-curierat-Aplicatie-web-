@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurierRapid - Acasă</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="home.html">Acasă</a></li>
+                <li><a href="awb.html">Urmărire AWB</a></li>
+                <li><a href="expediaza.html">Expediază</a></li>
+                <li><a href="tarife.html">Tarife</a></li>
+                <li><a href="locatii.html">Rețea</a></li>
+               <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <a href="profil.html" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+   <main>
+        <section class="pricing-section">
+            <h2>Tarife Standard</h2>
+            <p class="subtitle">Prețuri transparente, fără costuri ascunse. Alege opțiunea potrivită pentru tine.</p>
+
+            <div class="table-responsive">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Greutate Colet</th>
+                            <th>Local (București/Ilfov)</th>
+                            <th>Național (România)</th>
+                            <th>Internațional (UE)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Plic (max. 1 kg)</td>
+                            <td>15 RON</td>
+                            <td>20 RON</td>
+                            <td>80 RON</td>
+                        </tr>
+                        <tr>
+                            <td>Standard (1 - 5 kg)</td>
+                            <td>20 RON</td>
+                            <td>30 RON</td>
+                            <td>120 RON</td>
+                        </tr>
+                        <tr>
+                            <td>Mediu (5 - 15 kg)</td>
+                            <td>30 RON</td>
+                            <td>45 RON</td>
+                            <td>180 RON</td>
+                        </tr>
+                        <tr>
+                            <td>Voluminos (15 - 30 kg)</td>
+                            <td>50 RON</td>
+                            <td>75 RON</td>
+                            <td>250 RON</td>
+                        </tr>
+                        <tr>
+                            <td>Fiecare kg suplimentar</td>
+                            <td>+ 2 RON</td>
+                            <td>+ 3 RON</td>
+                            <td>+ 10 RON</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pricing-notes">
+                <p><strong>Notă:</strong> Tarifele includ TVA. Pentru coletele asigurate, se percepe o taxă suplimentară de 1% din valoarea declarată a coletului.</p>
+            </div>
+            <div class="cost-estimator">
+                <h3><span class="icon">🧮</span> Estimare rapidă de cost</h3>
+                <p>Introdu datele coletului tău pentru o estimare instantanee.</p>
+                
+                <form class="estimator-form">
+                    <div class="estimator-grid">
+                        <div class="form-group">
+                            <label for="calc-dest">Zonă Destinație</label>
+                            <select id="calc-dest">
+                                <option value="local">Local (București/Ilfov)</option>
+                                <option value="national" selected>Național (România)</option>
+                                <option value="international">Internațional (UE)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc-weight">Greutate (kg)</label>
+                            <input type="number" id="calc-weight" min="1" placeholder="Ex: 5" required>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn-calculate" onclick="alert('Sistem demonstrativ: Pe un site real cu bază de date, aici ar apărea prețul calculat automat în funcție de greutate și destinație!')">Calculează cost</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+
+</body>
+</html>

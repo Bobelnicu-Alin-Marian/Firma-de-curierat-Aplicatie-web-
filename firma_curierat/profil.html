@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurierRapid - Acasă</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="home.html">Acasă</a></li>
+                <li><a href="awb.html">Urmărire AWB</a></li>
+                <li><a href="expediaza.html">Expediază</a></li>
+                <li><a href="tarife.html">Tarife</a></li>
+                <li><a href="locatii.html">Rețea</a></li>
+                <li><a href="contact.html">Contact</a></li>
+           </ul>
+
+            <div class="user-menu">
+                <a href="profil.html" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+<main>
+        <section class="profile-section">
+            <div class="profile-header">
+                <h2>Tablou de Bord</h2>
+                <p class="subtitle">Bine ai revenit, Ion! Aici ai o imagine de ansamblu asupra contului tău.</p>
+            </div>
+
+            <div class="profile-grid">
+                
+                <aside class="profile-sidebar">
+                    <div class="avatar-container">
+                        <div class="avatar">👤</div>
+                        <h3>Ion Popescu</h3>
+                        <p class="user-type">Client VIP ⭐️</p>
+                    </div>
+                    <ul class="profile-menu">
+                        <li><a href="#" class="active">Panou General</a></li>
+                        <li><a href="#">Expedierile Mele</a></li>
+                        <li><a href="#">Adrese Salvate</a></li>
+                        <li><a href="#">Facturi & Plăți</a></li>
+                        <li><a href="#" class="logout-link" onclick="alert('Te-ai deconectat cu succes!')">Deconectare</a></li>
+                    </ul>
+                </aside>
+
+                <div class="profile-content">
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-info">
+                                <h3>24</h3>
+                                <p>Expedieri Totale</p>
+                            </div>
+                        </div>
+                        <div class="stat-card active-stat">
+                            <div class="stat-icon">🚚</div>
+                            <div class="stat-info">
+                                <h3>2</h3>
+                                <p>Colete în Tranzit</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💳</div>
+                            <div class="stat-info">
+                                <h3>0 Lei</h3>
+                                <p>Sold Restant</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widgets">
+                        
+                        <div class="content-box widget">
+                            <div class="widget-header">
+                                <h3>Date Personale</h3>
+                                <button class="btn-icon" onclick="alert('Activare mod editare...')" title="Editează">✏️</button>
+                            </div>
+                            <div class="info-list">
+                                <div class="info-row">
+                                    <span class="label">Nume:</span>
+                                    <span class="value">Ion Popescu</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Email:</span>
+                                    <span class="value">ion.popescu@exemplu.ro</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Telefon:</span>
+                                    <span class="value">+40 722 123 456</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Cont creat:</span>
+                                    <span class="value">Ianuarie 2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-box widget">
+                            <div class="widget-header">
+                                <h3>Adresă Principală</h3>
+                                <button class="btn-icon" onclick="alert('Schimbă adresa...')" title="Editează">✏️</button>
+                            </div>
+                            <div class="address-card interactive-card">
+                                <h4>📍 Acasă - Craiova</h4>
+                                <p>Strada Libertății, Nr. 45</p>
+                                <p>Bloc A2, Scara 1, Ap. 12</p>
+                                <p>Județul Dolj, 200123</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="content-box">
+                        <div class="widget-header">
+                            <h3>Activitate Recentă</h3>
+                            <a href="#" class="view-all">Vezi tot istoricul &rarr;</a>
+                        </div>
+                        <div class="recent-activity">
+                            <div class="activity-item">
+                                <div class="act-icon">✅</div>
+                                <div class="act-details">
+                                    <p><strong>AWB 0123456789</strong> a fost livrat cu succes.</p>
+                                    <span class="time">Azi, 14:30</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="act-icon">⚠️</div>
+                                <div class="act-details">
+                                    <p>Comanda nouă <strong>AWB 9876543210</strong> așteaptă preluarea.</p>
+                                    <span class="time">Ieri, 09:15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+
+</body>
+</html>

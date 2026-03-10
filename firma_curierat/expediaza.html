@@ -1,0 +1,106 @@
+
+    <!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurierRapid - Acasă</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="home.html">Acasă</a></li>
+                <li><a href="awb.html">Urmărire AWB</a></li>
+                <li><a href="expediaza.html">Expediază</a></li>
+                <li><a href="tarife.html">Tarife</a></li>
+                <li><a href="locatii.html">Rețea</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <a href="profil.html" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+   <main>
+        <section class="shipping-section">
+            <h2>Expediază un colet nou</h2>
+            <p class="subtitle">Completează datele de mai jos pentru a genera un AWB.</p>
+            
+            <form class="shipping-form" action="#" method="post">
+                
+                <div class="form-grid">
+                    
+                    <fieldset>
+                        <legend>Date Expeditor</legend>
+                        <div class="form-group">
+                            <label for="sender-name">Nume complet / Companie</label>
+                            <input type="text" id="sender-name" placeholder="Ex: Popescu Ion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sender-phone">Telefon</label>
+                            <input type="tel" id="sender-phone" placeholder="07XX XXX XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sender-address">Adresă completă de ridicare</label>
+                            <textarea id="sender-address" rows="3" placeholder="Strada, Număr, Oraș, Județ" required></textarea>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Date Destinatar</legend>
+                        <div class="form-group">
+                            <label for="receiver-name">Nume complet / Companie</label>
+                            <input type="text" id="receiver-name" placeholder="Ex: Ionescu Maria" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver-phone">Telefon</label>
+                            <input type="tel" id="receiver-phone" placeholder="07XX XXX XXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="receiver-address">Adresă completă de livrare</label>
+                            <textarea id="receiver-address" rows="3" placeholder="Strada, Număr, Oraș, Județ" required></textarea>
+                        </div>
+                    </fieldset>
+                    
+                </div> <fieldset class="parcel-details">
+                    <legend>Detalii Colet</legend>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="weight">Greutate (kg)</label>
+                            <input type="number" id="weight" min="1" placeholder="Ex: 2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Tip trimitere</label>
+                            <select id="type">
+                                <option value="plic">Plic (max 1kg)</option>
+                                <option value="standard" selected>Colet Standard</option>
+                                <option value="fragil">Colet Fragil</option>
+                                <option value="voluminos">Colet Voluminos</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-submit">Generează AWB</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+
+</body>
+</html>

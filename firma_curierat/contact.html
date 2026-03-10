@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurierRapid - Acasă</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="home.html">Acasă</a></li>
+                <li><a href="awb.html">Urmărire AWB</a></li>
+                <li><a href="expediaza.html">Expediază</a></li>
+                <li><a href="tarife.html">Tarife</a></li>
+                <li><a href="locatii.html">Rețea</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <a href="profil.html" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+   <main>
+        <section class="contact-section">
+            <h2>Contactează-ne</h2>
+            <p class="subtitle">Ai o întrebare sau o problemă cu un colet? Suntem aici să te ajutăm!</p>
+
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <h3>Informații Utile</h3>
+                    <p>Echipa noastră de suport este disponibilă pentru a răspunde solicitărilor tale în cel mai scurt timp.</p>
+                    
+                    <div class="info-box">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <h4>Call Center</h4>
+                            <p>021 555 9999 (Luni - Vineri: 08:00 - 20:00)</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <span class="info-icon">✉️</span>
+                        <div>
+                            <h4>Email Suport</h4>
+                            <p>suport@curierat-rapid.ro</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <span class="info-icon">🏢</span>
+                        <div>
+                            <h4>Sediu Central</h4>
+                            <p>Bd. Unirii, Nr. 10, Sector 3, București</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Trimite-ne un mesaj</h3>
+                    <form class="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="nume">Nume complet</label>
+                            <input type="text" id="nume" placeholder="Ex: Popescu Ion" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresă de Email</label>
+                            <input type="email" id="email" placeholder="nume@exemplu.ro" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subiect">Subiect (Opțional)</label>
+                            <input type="text" id="subiect" placeholder="Ex: Întârziere colet AWB123...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mesaj">Mesajul tău</label>
+                            <textarea id="mesaj" rows="5" placeholder="Scrie aici detaliile..." required></textarea>
+                        </div>
+
+                        <button type="button" class="btn-submit" onclick="alert('Sistem demonstrativ: Mesajul a fost trimis cu succes către echipa noastră de suport!')">Trimite Mesaj</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="faq-section">
+                <h3>Întrebări Frecvente (FAQ)</h3>
+                
+                <details class="faq-item">
+                    <summary>Cât durează livrarea unui colet standard?</summary>
+                    <p>În mod normal, coletele standard sunt livrate în termen de 24-48 de ore lucrătoare de la preluarea acestora de către curierul nostru, oriunde în țară. Pentru destinațiile internaționale, timpul mediu este de 3-5 zile.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Cum pot modifica adresa de livrare?</summary>
+                    <p>Dacă pachetul nu a fost încă predat curierului pentru livrarea finală (status "În tranzit"), poți contacta Call Center-ul nostru la 021 555 9999, oferind codul AWB pentru a actualiza gratuit adresa.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Ce fac dacă am primit coletul deteriorat?</summary>
+                    <p>Te rugăm să completezi formularul de mai sus în termen de maxim 48 de ore de la primire, selectând subiectul "Colet deteriorat". Atașează poze cu ambalajul și conținutul, iar echipa noastră va deschide imediat o procedură de despăgubire.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+
+</body>
+</html>

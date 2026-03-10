@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurierRapid - Acasă</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html">
+                    <img src="img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="home.html">Acasă</a></li>
+                <li><a href="awb.html">Urmărire AWB</a></li>
+                <li><a href="expediaza.html">Expediază</a></li>
+                <li><a href="tarife.html">Tarife</a></li>
+                <li><a href="locatii.html">Rețea</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="user-menu">
+                <a href="profil.html" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+   <main>
+        <section class="awb-section">
+            <h2>Urmărire Colet</h2>
+            <p class="subtitle">Introdu codul AWB format din 10 cifre pentru a vedea statusul livrării.</p>
+
+            <div class="search-container">
+                <input type="text" id="awb-input" placeholder="Ex: 0123456789" value="0123456789">
+                <button type="button" class="btn-search-awb" onclick="alert('Sistem demonstrativ: Aici se va face o cerere către baza de date pentru a aduce informațiile coletului!')">Caută Colet</button>
+            </div>
+
+            <div class="tracking-card">
+                <div class="tracking-header">
+                    <h3>Status: <span class="status-badge">În tranzit</span></h3>
+                    <p>AWB: <strong>0123456789</strong> | Destinație: <strong>Craiova, Dolj</strong></p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-step completed">
+                        <div class="step-icon">✓</div>
+                        <div class="step-info">
+                            <h4>Comandă înregistrată</h4>
+                            <p>09 Martie 2026, 10:15 - Hub București</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step completed">
+                        <div class="step-icon">✓</div>
+                        <div class="step-info">
+                            <h4>Preluat de curier</h4>
+                            <p>09 Martie 2026, 14:30 - Hub București</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step active">
+                        <div class="step-icon">🚚</div>
+                        <div class="step-info">
+                            <h4>În tranzit către depozitul local</h4>
+                            <p>10 Martie 2026, 08:45 - Pe traseu</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-step pending">
+                        <div class="step-icon">📦</div>
+                        <div class="step-info">
+                            <h4>Predare la destinatar</h4>
+                            <p>Livrare estimată: 11 Martie 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+
+</body>
+</html>
