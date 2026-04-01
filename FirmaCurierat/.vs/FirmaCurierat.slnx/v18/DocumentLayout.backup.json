@@ -1,0 +1,262 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\firmacurieratcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\firmacurieratcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\comanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\comanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\adresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\adresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\angajat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\angajat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\hub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\hub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\colet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\colet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\vehicul.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\vehicul.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\conduce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\conduce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\statuslivrare.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\statuslivrare.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\tranziteaza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\tranziteaza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|c:\\users\\mxb\\documents\\paw\\firmacurierat\\firmacurierat\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{560841F0-E78C-405B-A0F8-2925FB87BDFD}|FirmaCurierat\\FirmaCurierat.csproj|solutionrelative:firmacurierat\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Program.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Program.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Program.cs",
+              "RelativeToolTip": "FirmaCurierat\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T09:15:18.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\appsettings.json",
+              "RelativeDocumentMoniker": "FirmaCurierat\\appsettings.json",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\appsettings.json",
+              "RelativeToolTip": "FirmaCurierat\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAACPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-31T09:12:35.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Vehicul.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Vehicul.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Vehicul.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Vehicul.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Vehicul.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:41:05.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Colet.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Colet.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Colet.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Colet.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Colet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:40:23.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Comanda.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Comanda.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Comanda.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Comanda.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Comanda.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAwCMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:39:58.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HUB.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\HUB.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\HUB.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\HUB.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\HUB.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:38:38.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Factura.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Factura.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Factura.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Factura.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Factura.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:38:27.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FirmaCurieratContext.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\FirmaCurieratContext.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\FirmaCurieratContext.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\FirmaCurieratContext.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\FirmaCurieratContext.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAswFQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:52:45.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Conduce.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Conduce.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Conduce.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Conduce.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Conduce.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:41:24.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "StatusLivrare.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\StatusLivrare.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\StatusLivrare.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\StatusLivrare.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\StatusLivrare.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:41:41.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Tranziteaza.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Tranziteaza.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Tranziteaza.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Tranziteaza.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Tranziteaza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:42:31.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Angajat.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Angajat.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Angajat.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Angajat.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Angajat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:38:19.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Adresa.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Adresa.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Adresa.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Adresa.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Adresa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:34:57.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Client.cs",
+              "DocumentMoniker": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Client.cs",
+              "RelativeDocumentMoniker": "FirmaCurierat\\Models\\Client.cs",
+              "ToolTip": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\Models\\Client.cs",
+              "RelativeToolTip": "FirmaCurierat\\Models\\Client.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T08:37:45.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

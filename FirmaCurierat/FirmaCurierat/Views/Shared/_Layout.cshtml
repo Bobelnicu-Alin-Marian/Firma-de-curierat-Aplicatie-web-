@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FirmaCurierat</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FirmaCurierat.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo.png" alt="Logo CurierRapid">
+                </a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a asp-controller="Home" asp-action="Index">Acasă</a></li>
+                <li><a href="#">Urmărire AWB</a></li>
+                <li><a asp-controller="Colete" asp-action="Create">Expediază</a></li>
+                <li><a href="#">Tarife</a></li>
+                <li><a href="#">Rețea</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="user-menu">
+                <a asp-controller="Home" asp-action="Profil" class="btn-profil">Profilul Meu</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CurierRapid.</p>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

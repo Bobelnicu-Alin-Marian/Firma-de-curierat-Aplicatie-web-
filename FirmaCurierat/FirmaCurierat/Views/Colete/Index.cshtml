@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FirmaCurierat.Models.Colet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Awb)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Greutate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dimensiune)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_comanda)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Awb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Greutate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dimensiune)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_comanda)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_colet">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_colet">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_colet">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

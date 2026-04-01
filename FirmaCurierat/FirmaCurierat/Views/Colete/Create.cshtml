@@ -1,0 +1,91 @@
+﻿@model FirmaCurierat.Models.Colet
+
+<main>
+    <section class="shipping-section">
+        <h2>Expediază un colet nou</h2>
+        <p class="subtitle">Completează datele de mai jos pentru a genera un AWB.</p>
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+                <strong>Succes!</strong> @TempData["SuccessMessage"]
+            </div>
+        }
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+
+            <div class="form-grid">
+                <fieldset>
+                    <legend>Date Expeditor</legend>
+                    <div class="form-group">
+                        <label>Nume complet / Companie</label>
+                        <input type="text" placeholder="Ex: Popescu Ion">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" placeholder="07XX XXX XXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Adresă completă de ridicare</label>
+                        <textarea rows="3" placeholder="Strada, Număr, Oraș, Județ"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Date Destinatar</legend>
+                    <div class="form-group">
+                        <label>Nume complet / Companie</label>
+                        <input type="text" placeholder="Ex: Ionescu Maria">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" placeholder="07XX XXX XXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Adresă completă de livrare</label>
+                        <textarea rows="3" placeholder="Strada, Număr, Oraș, Județ"></textarea>
+                    </div>
+                </fieldset>
+            </div>
+
+            <fieldset class="parcel-details">
+                <legend>Detalii Colet</legend>
+                <div class="form-group">
+                    <label>Număr AWB</label>
+                    <input type="text" class="form-control" value="Generat automat la salvare" readonly style="background-color: #eee; cursor: not-allowed;">
+                </div>
+                
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>Dimensiune Colet</label>
+                    <select asp-for="Dimensiune" class="form-control">
+                        <option value="S">S (Plic / Cutie mică)</option>
+                        <option value="M" selected>M (Cutie medie - Standard)</option>
+                        <option value="L">L (Cutie mare / Voluminos)</option>
+                        <option value="XL">XL (Palet / Agabaritic)</option>
+                    </select>
+                </div>
+                <div class="form-group-inline" style="display:flex; gap:20px; margin-top:15px;">
+                    <div class="form-group" style="flex:1;">
+                        <label>Greutate (kg)</label>
+                        <input asp-for="Greutate" type="number" step="0.01" placeholder="Ex: 2" required>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>Preț (RON)</label>
+                        <input asp-for="Pret" type="number" step="0.01" placeholder="Ex: 25" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:15px;">
+                    <label>Tip trimitere</label>
+                    <select asp-for="Tip">
+                        <option value="Plic">Plic (max 1kg)</option>
+                        <option value="Standard" selected>Colet Standard</option>
+                        <option value="Fragil">Colet Fragil</option>
+                        <option value="Voluminos">Colet Voluminos</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Generează AWB</button>
+        </form>
+    </section>
+</main>

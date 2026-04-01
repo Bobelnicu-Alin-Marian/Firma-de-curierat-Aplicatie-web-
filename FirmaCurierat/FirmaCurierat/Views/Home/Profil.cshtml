@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Profilul Meu";
+}
+
+<section class="profile-section">
+    <div class="profile-header">
+        <h2>Tablou de Bord</h2>
+        <p class="subtitle">Bine ai revenit, Ion! Aici ai o imagine de ansamblu asupra contului tău.</p>
+    </div>
+
+    <div class="profile-grid">
+        <aside class="profile-sidebar">
+            <div class="avatar-container">
+                <div class="avatar">👤</div>
+                <h3>Ion Popescu</h3>
+                <p class="user-type">Client VIP ⭐️</p>
+            </div>
+            <ul class="profile-menu">
+                <li><a asp-controller="Home" asp-action="Profil" class="active">Panou General</a></li>
+    
+                <li>
+                    <a asp-controller="Colete" asp-action="Index">Expedierile Mele</a>
+                </li>
+                
+                <li><a href="#">Adrese Salvate</a></li>
+                <li><a href="#">Facturi & Plăți</a></li>
+                <li><a asp-controller="Home" asp-action="Index" class="logout-link">Deconectare</a></li>
+            </ul>
+        </aside>
+
+        <div class="profile-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Expedieri Totale</p>
+                    </div>
+                </div>
+                <div class="stat-card active-stat">
+                    <div class="stat-icon">🚚</div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Colete în Tranzit</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💳</div>
+                    <div class="stat-info">
+                        <h3>0 Lei</h3>
+                        <p>Sold Restant</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-widgets">
+                <div class="content-box widget">
+                    <div class="widget-header">
+                        <h3>Date Personale</h3>
+                        <button class="btn-icon" title="Editează">✏️</button>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-row"><span class="label">Nume:</span><span class="value">Ion Popescu</span></div>
+                        <div class="info-row"><span class="label">Email:</span><span class="value">ion.popescu@exemplu.ro</span></div>
+                        <div class="info-row"><span class="label">Telefon:</span><span class="value">+40 722 123 456</span></div>
+                        <div class="info-row"><span class="label">Cont creat:</span><span class="value">Ianuarie 2025</span></div>
+                    </div>
+                </div>
+
+                <div class="content-box widget">
+                    <div class="widget-header">
+                        <h3>Adresă Principală</h3>
+                        <button class="btn-icon" title="Editează">✏️</button>
+                    </div>
+                    <div class="address-card interactive-card">
+                        <h4>📍 Acasă - Craiova</h4>
+                        <p>Strada Libertății, Nr. 45</p>
+                        <p>Bloc A2, Scara 1, Ap. 12</p>
+                        <p>Județul Dolj, 200123</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="widget-header">
+                    <h3>Activitate Recentă</h3>
+                    <a asp-controller="Colete" asp-action="Index" class="view-all">Vezi tot istoricul &rarr;</a>
+                </div>
+                <div class="recent-activity">
+                    <div class="activity-item">
+                        <div class="act-icon">✅</div>
+                        <div class="act-details">
+                            <p><strong>Ultimul AWB generat</strong> a fost salvat în bază.</p>
+                            <span class="time">Recent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
