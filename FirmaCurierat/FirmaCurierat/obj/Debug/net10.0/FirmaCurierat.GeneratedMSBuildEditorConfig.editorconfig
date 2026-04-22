@@ -19,85 +19,145 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = FirmaCurierat
 build_property.RootNamespace = FirmaCurierat
-build_property.ProjectDir = C:\Users\MXB\Documents\paw\FirmaCurierat\FirmaCurierat\
+build_property.ProjectDir = C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\MXB\Documents\paw\FirmaCurierat\FirmaCurierat
+build_property.MSBuildProjectDirectory = C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Clients/Create.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Clients/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Clients/Delete.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Clients/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Clients/Details.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Clients/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Clients/Edit.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Clients/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Clients/Index.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Clients/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Colete/Create.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Colete/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Colete/Delete.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Colete/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRlXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Colete/Details.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Colete/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Colete/Edit.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Colete/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Colete/Index.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Colete/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Home/Index.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Comandas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tYW5kYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Comandas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tYW5kYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Comandas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tYW5kYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Comandas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tYW5kYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Comandas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tYW5kYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Home/Privacy.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Home/Profil.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Home/Profil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Shared/Error.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Hubs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVic1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Hubs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVic1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Hubs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVic1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Hubs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVic1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Hubs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVic1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/_ViewImports.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Tarife/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Tarife/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZlXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Tarife/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Tarife/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Tarife/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/_ViewStart.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/MXB/Documents/paw/FirmaCurierat/FirmaCurierat/Views/Shared/_Layout.cshtml]
+[C:/Users/MXB/Desktop/Firma-de-curierat-Aplicatie-web-/FirmaCurierat/FirmaCurierat/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vh06007gyb

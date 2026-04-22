@@ -6,167 +6,128 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FirmaCurierat.Models;
+using FirmaCurierat.Services; // namespace-ul pentru Servicii
 
 namespace FirmaCurierat.Controllers
 {
     public class ColeteController : Controller
     {
-        private readonly FirmaCurieratContext _context;
+        private readonly IColetService _coletService;
 
-        public ColeteController(FirmaCurieratContext context)
+        // introducem serviciul prin constructor
+        public ColeteController(IColetService coletService)
         {
-            _context = context;
+            _coletService = coletService;
         }
 
-        // GET: Colets
+        // GET: Colete
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Colete.ToListAsync());
+            var colete = await _coletService.GetAllColeteAsync();
+            return View(colete);
         }
 
-        // GET: Colets/Details/5
+        // GET: Colete/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var colet = await _context.Colete
-                .FirstOrDefaultAsync(m => m.Id_colet == id);
-            if (colet == null)
-            {
-                return NotFound();
-            }
+            var colet = await _coletService.GetColetByIdAsync(id.Value);
+            if (colet == null) return NotFound();
 
             return View(colet);
         }
 
-        // GET: Colets/Create
+        // GET: Colete/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Colets/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Colete/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id_colet,Pret,Greutate,Tip,Dimensiune")] Colet colet)
         {
             try
             {
-                Random rng = new Random();
+                
+                await _coletService.AddColetAsync(colet);
 
-                long min = 10000000000;
-                long max = 99999999999;
-                long awbAleatoriu = (long)(rng.NextDouble() * (max - min) + min);
-
-                colet.Awb = awbAleatoriu.ToString();
-
-                colet.Id_comanda = null;
-
-                _context.Add(colet);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Coletul a fost înregistrat cu succes! AWB: " + colet.Awb;
+                
+                TempData["SuccessMessage"] = "Coletul a fost adaugat cu succes! AWB: " + colet.Awb;
                 return View();
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Eroare la generare: " + ex.Message);
+                ModelState.AddModelError("", "Eroare la înregistrare: " + ex.Message);
                 return View(colet);
             }
         }
 
-        // GET: Colets/Edit/5
+        // GET: Colete/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var colet = await _context.Colete.FindAsync(id);
-            if (colet == null)
-            {
-                return NotFound();
-            }
+            var colet = await _coletService.GetColetByIdAsync(id.Value);
+            if (colet == null) return NotFound();
+
             return View(colet);
         }
 
-        // POST: Colets/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Colete/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id_colet,Awb,Pret,Greutate,Dimensiune,Tip,Id_comanda")] Colet colet)
         {
             if (id != colet.Id_colet) return NotFound();
 
-            // ELIMINĂM "SUSPECTUL": Dacă Id_comanda e null, ModelState ar fi invalid. 
-            // Spunem .NET-ului să nu-i pese de el la validare.
             ModelState.Remove("Id_comanda");
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(colet);
-                    await _context.SaveChangesAsync();
+                    // Folosim serviciul pentru a face update
+                    await _coletService.UpdateColetAsync(colet);
                     return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception)
                 {
-                    if (!ColetExists(colet.Id_colet)) return NotFound();
+                    if (!await ColetExists(colet.Id_colet)) return NotFound();
                     else throw;
                 }
-            }
-
-            // DACĂ TOT NU MERGE: Forțăm salvarea aici pentru a vedea dacă problema e doar validarea
-            // (Șterge liniile de mai jos după ce confirmi că merge)
-            _context.Update(colet);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        // GET: Colets/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var colet = await _context.Colete
-                .FirstOrDefaultAsync(m => m.Id_colet == id);
-            if (colet == null)
-            {
-                return NotFound();
             }
 
             return View(colet);
         }
 
-        // POST: Colets/Delete/5
+        // GET: Colete/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var colet = await _coletService.GetColetByIdAsync(id.Value);
+            if (colet == null) return NotFound();
+
+            return View(colet);
+        }
+
+        // POST: Colete/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var colet = await _context.Colete.FindAsync(id);
-            if (colet != null)
-            {
-                _context.Colete.Remove(colet);
-            }
-
-            await _context.SaveChangesAsync();
+            // Folosim serviciul pentru stergere
+            await _coletService.DeleteColetAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ColetExists(int id)
+        private async Task<bool> ColetExists(int id)
         {
-            return _context.Colete.Any(e => e.Id_colet == id);
+            var colet = await _coletService.GetColetByIdAsync(id);
+            return colet != null;
         }
     }
 }

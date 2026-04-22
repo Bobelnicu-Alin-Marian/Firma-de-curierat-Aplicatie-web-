@@ -1,0 +1,31 @@
+﻿@model FirmaCurierat.Models.Hub
+
+@{
+    ViewData["Title"] = "Editează Hub";
+}
+
+<h3>Modifică datele sediului</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id_hub" />
+            <div class="form-group">
+                <label asp-for="Oras" class="control-label"></label>
+                <input asp-for="Oras" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacitate" class="control-label"></label>
+                <input asp-for="Capacitate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_adresa" class="control-label"></label>
+                <input asp-for="Id_adresa" class="form-control" readonly />
+            </div>
+            <div class="form-group" style="margin-top:10px;">
+                <input type="submit" value="Salvează modificările" class="btn btn-success" />
+                <a asp-action="Index">Anulează</a>
+            </div>
+        </form>
+    </div>
+</div>

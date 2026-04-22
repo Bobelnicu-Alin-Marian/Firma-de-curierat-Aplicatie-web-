@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WzQkQAGbQMg=",
+  "dgSpecHash": "5bG9gAEjA44=",
   "success": true,
-  "projectFilePath": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
+  "projectFilePath": "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MXB\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\MXB\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",

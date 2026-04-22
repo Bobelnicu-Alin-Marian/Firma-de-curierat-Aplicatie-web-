@@ -1,6 +1,7 @@
 
-using Microsoft.EntityFrameworkCore;
 using FirmaCurierat.Models;
+using FirmaCurierat.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FirmaCurieratContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CurieratDbConnection")));
 
-
+builder.Services.AddScoped<FirmaCurierat.Services.IColetService, FirmaCurierat.Services.ColetService>();
+builder.Services.AddScoped(typeof(FirmaCurierat.Repositories.IRepository<>), typeof(FirmaCurierat.Repositories.GenericRepository<>));
+builder.Services.AddScoped<FirmaCurierat.Services.IHubService, FirmaCurierat.Services.HubService>();
+builder.Services.AddScoped<ITarifService, TarifService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

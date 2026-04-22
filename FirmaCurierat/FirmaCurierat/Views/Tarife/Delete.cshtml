@@ -1,0 +1,18 @@
+﻿@model FirmaCurierat.Models.Tarif
+
+<main>
+    <section class="shipping-section">
+        <h2 style="color: #dc3545;">Ștergere Tarif</h2>
+        <div class="parcel-details" style="padding: 20px; border: 1px solid #ff000033;">
+            <p>Ești sigur că vrei să ștergi categoria <strong>@Model.CategorieGreutate</strong>?</p>
+            <ul>
+                <li>Preț Local: @Model.PretLocal RON</li>
+            </ul>
+        </div>
+        <form asp-action="Delete" method="post" style="margin-top:20px;">
+            <input type="hidden" asp-for="Id_tarif" />
+            <button type="submit" class="btn-submit" style="background-color: #dc3545;">Da, Șterge definitiv</button>
+            <a asp-action="Index" style="margin-left:15px;">Anulează</a>
+        </form>
+    </section>
+</main>

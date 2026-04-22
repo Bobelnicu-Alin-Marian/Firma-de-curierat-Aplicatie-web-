@@ -1,0 +1,48 @@
+﻿@model FirmaCurierat.Models.Hub
+
+@{
+    ViewData["Title"] = "Adaugă Hub";
+}
+
+<h3>Creează un sediu nou</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        @* Formularul care trimite datele către metoda POST din HubsController *@
+        <form asp-action="Create" method="post">
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label asp-for="Oras" class="control-label">Orașul Sediului</label>
+                <input asp-for="Oras" class="form-control" required />
+                <span asp-validation-for="Oras" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label asp-for="Capacitate" class="control-label">Capacitate (nr. colete)</label>
+                <input asp-for="Capacitate" class="form-control" type="number" required />
+                <span asp-validation-for="Capacitate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label asp-for="Id_adresa" class="control-label">ID Adresă (Opțional)</label>
+                @* Aici utilizatorul poate lăsa gol, iar C#-ul va trimite NULL către baza de date *@
+                <input asp-for="Id_adresa" class="form-control" type="number" placeholder="Lăsați gol dacă nu există o adresă" />
+                <span asp-validation-for="Id_adresa" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Salvează" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-outline-secondary" style="margin-left: 10px;">Înapoi la listă</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@* Această secțiune activează validarea direct în browser (fără să reîncarce pagina) *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

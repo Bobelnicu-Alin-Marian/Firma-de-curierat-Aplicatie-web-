@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj": {}
+    "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj": {
+    "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
+        "projectUniqueName": "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
         "projectName": "FirmaCurierat",
-        "projectPath": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
+        "projectPath": "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\FirmaCurierat.csproj",
         "packagesPath": "C:\\Users\\MXB\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\MXB\\Documents\\paw\\FirmaCurierat\\FirmaCurierat\\obj\\",
+        "outputPath": "C:\\Users\\MXB\\Desktop\\Firma-de-curierat-Aplicatie-web-\\FirmaCurierat\\FirmaCurierat\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -36,12 +36,15 @@
           }
         },
         "warningProperties": {
+          "noWarn": [
+            "NU1901"
+          ],
           "warnAsError": [
             "NU1605"
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "all"
         },

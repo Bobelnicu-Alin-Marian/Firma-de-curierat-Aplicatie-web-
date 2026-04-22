@@ -1,0 +1,62 @@
+﻿@model FirmaCurierat.Models.Comanda
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Comanda</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_expeditor" class="control-label"></label>
+                <select asp-for="Id_expeditor" class ="form-control" asp-items="ViewBag.Id_expeditor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_destinatar" class="control-label"></label>
+                <select asp-for="Id_destinatar" class ="form-control" asp-items="ViewBag.Id_destinatar"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_adresa_ridicare" class="control-label"></label>
+                <select asp-for="Id_adresa_ridicare" class ="form-control" asp-items="ViewBag.Id_adresa_ridicare"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_adresa_livrare" class="control-label"></label>
+                <select asp-for="Id_adresa_livrare" class ="form-control" asp-items="ViewBag.Id_adresa_livrare"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_operator" class="control-label"></label>
+                <select asp-for="Id_operator" class ="form-control" asp-items="ViewBag.Id_operator"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_curier" class="control-label"></label>
+                <select asp-for="Id_curier" class ="form-control" asp-items="ViewBag.Id_curier"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_hub" class="control-label"></label>
+                <input asp-for="Id_hub" class="form-control" />
+                <span asp-validation-for="Id_hub" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

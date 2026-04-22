@@ -1,0 +1,22 @@
+﻿@model FirmaCurierat.Models.Hub
+
+@{
+    ViewData["Title"] = "Detalii Hub";
+}
+
+<div>
+    <h4>Detalii Sediu Logistic</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID Hub</dt>
+        <dd class="col-sm-10">@Model.Id_hub</dd>
+        <dt class="col-sm-2">Oraș</dt>
+        <dd class="col-sm-10">@Model.Oras</dd>
+        <dt class="col-sm-2">Capacitate</dt>
+        <dd class="col-sm-10">@Model.Capacitate m³</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_hub">Editează</a> |
+    <a asp-action="Index">Înapoi la listă</a>
+</div>

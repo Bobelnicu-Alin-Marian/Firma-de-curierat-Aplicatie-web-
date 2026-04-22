@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FirmaCurierat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74e17fc837aa8f7b1cb972a690c51585f6aefd90")]
 [assembly: System.Reflection.AssemblyProductAttribute("FirmaCurierat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FirmaCurierat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

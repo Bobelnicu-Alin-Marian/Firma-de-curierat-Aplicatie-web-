@@ -12,10 +12,10 @@ namespace FirmaCurierat.Models
         public string Oras { get; set; }
 
         // Foreign Key către Adresa Hub-ului
-        public int Id_adresa { get; set; }
-        public Adresa Adresa { get; set; }
+        public int? Id_adresa { get; set; }
+        public Adresa? Adresa { get; set; }
 
-        public ICollection<Tranziteaza> Tranzitari { get; set; }
-        public ICollection<Comanda> Comenzi { get; set; }
+        public ICollection<Tranziteaza>? Tranzitari { get; set; }
+        public ICollection<Comanda>? Comenzi { get; set; }
     }
 }

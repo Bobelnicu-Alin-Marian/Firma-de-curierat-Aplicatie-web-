@@ -122,23 +122,28 @@ namespace FirmaCurierat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ComandaId_comanda")
+                    b.Property<int?>("ComandaId_comanda")
                         .HasColumnType("int");
 
                     b.Property<string>("Dimensiune")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Greutate")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Id_comanda")
+                    b.Property<int?>("Id_comanda")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Id_tarif")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Pret")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("TarifId_tarif")
+                        .HasColumnType("int");
 
                     b.Property<string>("Tip")
                         .IsRequired()
@@ -147,6 +152,8 @@ namespace FirmaCurierat.Migrations
                     b.HasKey("Id_colet");
 
                     b.HasIndex("ComandaId_comanda");
+
+                    b.HasIndex("TarifId_tarif");
 
                     b.ToTable("Colete");
                 });
@@ -276,7 +283,7 @@ namespace FirmaCurierat.Migrations
                     b.Property<int>("Capacitate")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id_adresa")
+                    b.Property<int?>("Id_adresa")
                         .HasColumnType("int");
 
                     b.Property<string>("Oras")
@@ -313,6 +320,32 @@ namespace FirmaCurierat.Migrations
                     b.HasIndex("ColetId_colet");
 
                     b.ToTable("StatusuriLivrare");
+                });
+
+            modelBuilder.Entity("FirmaCurierat.Models.Tarif", b =>
+                {
+                    b.Property<int>("Id_tarif")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_tarif"));
+
+                    b.Property<string>("CategorieGreutate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PretInternational")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PretLocal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PretNational")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id_tarif");
+
+                    b.ToTable("Tarife");
                 });
 
             modelBuilder.Entity("FirmaCurierat.Models.Tranziteaza", b =>
@@ -392,11 +425,15 @@ namespace FirmaCurierat.Migrations
                 {
                     b.HasOne("FirmaCurierat.Models.Comanda", "Comanda")
                         .WithMany("Colete")
-                        .HasForeignKey("ComandaId_comanda")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ComandaId_comanda");
+
+                    b.HasOne("FirmaCurierat.Models.Tarif", "Tarif")
+                        .WithMany("Colete")
+                        .HasForeignKey("TarifId_tarif");
 
                     b.Navigation("Comanda");
+
+                    b.Navigation("Tarif");
                 });
 
             modelBuilder.Entity("FirmaCurierat.Models.Comanda", b =>
@@ -499,8 +536,7 @@ namespace FirmaCurierat.Migrations
                     b.HasOne("FirmaCurierat.Models.Adresa", "Adresa")
                         .WithMany()
                         .HasForeignKey("Id_adresa")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Adresa");
                 });
@@ -565,6 +601,11 @@ namespace FirmaCurierat.Migrations
                     b.Navigation("Comenzi");
 
                     b.Navigation("Tranzitari");
+                });
+
+            modelBuilder.Entity("FirmaCurierat.Models.Tarif", b =>
+                {
+                    b.Navigation("Colete");
                 });
 
             modelBuilder.Entity("FirmaCurierat.Models.Vehicul", b =>

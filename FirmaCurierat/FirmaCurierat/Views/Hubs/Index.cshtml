@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FirmaCurierat.Models.Hub>
+
+@{
+    ViewData["Title"] = "Rețeaua Noastră";
+}
+
+<section class="network-section">
+    <h2>Rețeaua Noastră</h2>
+    <p>Gestionați locațiile și sediile logistice ale firmei.</p>
+
+    <div style="margin-bottom: 20px;">
+        <a asp-action="Create" class="btn-add">➕ Adaugă Hub Nou</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Oraș</th>
+                <th>Capacitate</th>
+                <th>ID Adresă</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Oras</td>
+                    <td>@item.Capacitate</td>
+                    <td>@item.Id_adresa</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id_hub">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id_hub">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id_hub" style="color:red;">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+
+    <div class="map-container" style="margin-top: 30px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display:flex; flex-direction:column; height:650px;">
+    
+        <h3 style="padding: 15px 20px; margin: 0; background-color: #333; color: white;">
+            📍 Acoperire Națională
+        </h3>
+
+        <div style="flex:1;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8444388087937!2d26.096306!3d44.426165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff0000000001%3A0x0!2sBucure%C5%9Fti!5e0!3m2!1sro!2sro!4v1600000000000!5m2!1sro!2sro"
+                    style="width:100%; height:100%; border:0;"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+</section>

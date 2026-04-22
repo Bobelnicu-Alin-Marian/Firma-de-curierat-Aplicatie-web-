@@ -1,0 +1,25 @@
+﻿@model FirmaCurierat.Models.Tarif
+
+@{
+    ViewData["Title"] = "Detalii Tarif";
+}
+
+<h3>Detalii pentru categoria: @Model.CategorieGreutate</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Preț Local</dt>
+        <dd class="col-sm-8">@Model.PretLocal RON</dd>
+
+        <dt class="col-sm-4">Preț Național</dt>
+        <dd class="col-sm-8">@Model.PretNational RON</dd>
+
+        <dt class="col-sm-4">Preț Internațional</dt>
+        <dd class="col-sm-8">@Model.PretInternational RON</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_tarif">Edit</a> |
+    <a asp-action="Index">Înapoi la listă</a>
+</div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FirmaCurierat.Models.Tarif>
+
+@{
+    ViewData["Title"] = "Tarife";
+}
+
+<div style="text-align: center; margin-bottom: 20px; margin-top: 20px;">
+    <a asp-action="Create" style="text-decoration: none; color: #007bff; font-weight: bold;">➕ Adaugă Tarif Nou</a>
+</div>
+
+<table class="table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <thead>
+        <tr style="border-bottom: 2px solid #ddd;">
+            <th style="padding: 10px; text-align: left;">Categorie / Greutate</th>
+            <th style="padding: 10px; text-align: center;">Preț Local</th>
+            <th style="padding: 10px; text-align: center;">Preț Național</th>
+            <th style="padding: 10px; text-align: center;">Preț Internațional</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 15px 10px; font-weight: 500;">@item.CategorieGreutate</td>
+                <td style="padding: 15px 10px; text-align: center;">@item.PretLocal</td>
+                <td style="padding: 15px 10px; text-align: center;">@item.PretNational</td>
+                <td style="padding: 15px 10px; text-align: center;">@item.PretInternational</td>
+                
+                <td style="padding: 15px 10px; text-align: right;">
+                    <a asp-action="Edit" asp-route-id="@item.Id_tarif">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id_tarif">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id_tarif" style="color: red;">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
