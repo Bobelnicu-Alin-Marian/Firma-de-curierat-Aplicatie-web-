@@ -24,14 +24,17 @@ namespace FirmaCurierat.Models
         public DbSet<Tranziteaza> Tranzitari { get; set; }
         public DbSet<Tarif> Tarife { get; set; }
 
+        // NOU: Tabelul pentru datele de contact editabile
+        public DbSet<Contact> Contacte { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+
             modelBuilder.Entity<Colet>().Property(c => c.Pret).HasPrecision(18, 2);
             modelBuilder.Entity<Colet>().Property(c => c.Greutate).HasPrecision(18, 2);
             modelBuilder.Entity<Factura>().Property(f => f.Valoare).HasPrecision(18, 2);
 
-           
+
             modelBuilder.Entity<Tranziteaza>()
                 .HasOne(t => t.Colet)
                 .WithMany(c => c.Tranzitari)
@@ -71,11 +74,11 @@ namespace FirmaCurierat.Models
             modelBuilder.Entity<Factura>()
                 .HasOne(f => f.Comanda).WithMany(c => c.Facturi).HasForeignKey(f => f.Id_comanda).OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Hub>()
-                .HasOne(h => h.Adresa)
-                .WithMany()
-                .HasForeignKey(h => h.Id_adresa)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<StatusLivrare>()
+                .HasOne(s => s.Colet)
+                .WithMany(c => c.Statusuri)
+                .HasForeignKey(s => s.Id_colet)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

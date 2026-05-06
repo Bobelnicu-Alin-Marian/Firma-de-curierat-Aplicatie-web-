@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FirmaCurierat.Models.Adresa>
+
+@{
+    ViewData["Title"] = "Adresele Mele";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📍 Adresele Mele</h2>
+        <a asp-action="Create" class="btn btn-primary">
+            + Adaugă o adresă nouă
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Județ / Localitate</th>
+                        <th>Stradă / Număr</th>
+                        <th>Țară</th>
+                        <th class="text-end">Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center py-4 text-muted">
+                                Nu ai salvat nicio adresă până acum. Apasă pe butonul de mai sus pentru a adăuga una!
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="align-middle">@item.Judet, @item.Localitate</td>
+                                <td class="align-middle">Str. @item.Strada, Nr. @item.Numar</td>
+                                <td class="align-middle">@item.Tara</td>
+                                <td class="text-end align-middle">
+                                    <a asp-action="Edit" asp-route-id="@item.Id_adresa" class="btn btn-sm btn-outline-primary">✏️ Editează</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id_adresa" class="btn btn-sm btn-outline-danger ms-2">🗑️ Șterge</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -16,13 +16,11 @@
                 <p class="user-type">Client VIP ⭐️</p>
             </div>
             <ul class="profile-menu">
-                <li><a asp-controller="Home" asp-action="Profil" class="active">Panou General</a></li>
-    
-                <li>
-                    <a asp-controller="Colete" asp-action="Index">Expedierile Mele</a>
-                </li>
+                <li><a asp-controller="Colete" asp-action="Index">Expedierile Mele</a></li>
                 
-                <li><a href="#">Adrese Salvate</a></li>
+                <!-- Legatura cu controllerul de adrese -->
+                <li><a asp-controller="Adrese" asp-action="Index">Adrese Salvate</a></li>
+                
                 <li><a href="#">Facturi & Plăți</a></li>
                 <li><a asp-controller="Home" asp-action="Index" class="logout-link">Deconectare</a></li>
             </ul>
@@ -66,19 +64,7 @@
                         <div class="info-row"><span class="label">Cont creat:</span><span class="value">Ianuarie 2025</span></div>
                     </div>
                 </div>
-
-                <div class="content-box widget">
-                    <div class="widget-header">
-                        <h3>Adresă Principală</h3>
-                        <button class="btn-icon" title="Editează">✏️</button>
-                    </div>
-                    <div class="address-card interactive-card">
-                        <h4>📍 Acasă - Craiova</h4>
-                        <p>Strada Libertății, Nr. 45</p>
-                        <p>Bloc A2, Scara 1, Ap. 12</p>
-                        <p>Județul Dolj, 200123</p>
-                    </div>
-                </div>
+              
             </div>
 
             <div class="content-box">

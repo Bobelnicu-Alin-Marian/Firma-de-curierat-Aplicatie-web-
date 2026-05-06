@@ -30,9 +30,6 @@ namespace FirmaCurierat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_adresa"));
 
-                    b.Property<int>("ClientId_client")
-                        .HasColumnType("int");
-
                     b.Property<int?>("Id_client")
                         .HasColumnType("int");
 
@@ -48,13 +45,17 @@ namespace FirmaCurierat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Strada")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Tara")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_adresa");
 
-                    b.HasIndex("ClientId_client");
+                    b.HasIndex("Id_client");
 
                     b.ToTable("Adrese");
                 });
@@ -125,6 +126,9 @@ namespace FirmaCurierat.Migrations
                     b.Property<int?>("ComandaId_comanda")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("CostLivrare")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Dimensiune")
                         .HasColumnType("nvarchar(max)");
 
@@ -146,6 +150,10 @@ namespace FirmaCurierat.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Tip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZonaLivrare")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -239,6 +247,30 @@ namespace FirmaCurierat.Migrations
                     b.ToTable("Conduceri");
                 });
 
+            modelBuilder.Entity("FirmaCurierat.Models.Contact", b =>
+                {
+                    b.Property<int>("Id_contact")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_contact"));
+
+                    b.Property<string>("Detalii")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Metoda")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Valoare")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id_contact");
+
+                    b.ToTable("Contacte");
+                });
+
             modelBuilder.Entity("FirmaCurierat.Models.Factura", b =>
                 {
                     b.Property<int>("Id_factura")
@@ -283,16 +315,11 @@ namespace FirmaCurierat.Migrations
                     b.Property<int>("Capacitate")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Id_adresa")
-                        .HasColumnType("int");
-
                     b.Property<string>("Oras")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id_hub");
-
-                    b.HasIndex("Id_adresa");
 
                     b.ToTable("Huburi");
                 });
@@ -305,8 +332,8 @@ namespace FirmaCurierat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_status"));
 
-                    b.Property<int>("ColetId_colet")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Data_actualizare")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Denumire")
                         .IsRequired()
@@ -315,9 +342,12 @@ namespace FirmaCurierat.Migrations
                     b.Property<int>("Id_colet")
                         .HasColumnType("int");
 
+                    b.Property<string>("Locatie")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id_status");
 
-                    b.HasIndex("ColetId_colet");
+                    b.HasIndex("Id_colet");
 
                     b.ToTable("StatusuriLivrare");
                 });
@@ -414,9 +444,7 @@ namespace FirmaCurierat.Migrations
                 {
                     b.HasOne("FirmaCurierat.Models.Client", "Client")
                         .WithMany("Adrese")
-                        .HasForeignKey("ClientId_client")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Id_client");
 
                     b.Navigation("Client");
                 });
@@ -531,21 +559,11 @@ namespace FirmaCurierat.Migrations
                     b.Navigation("Comanda");
                 });
 
-            modelBuilder.Entity("FirmaCurierat.Models.Hub", b =>
-                {
-                    b.HasOne("FirmaCurierat.Models.Adresa", "Adresa")
-                        .WithMany()
-                        .HasForeignKey("Id_adresa")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("Adresa");
-                });
-
             modelBuilder.Entity("FirmaCurierat.Models.StatusLivrare", b =>
                 {
                     b.HasOne("FirmaCurierat.Models.Colet", "Colet")
                         .WithMany("Statusuri")
-                        .HasForeignKey("ColetId_colet")
+                        .HasForeignKey("Id_colet")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -1,0 +1,52 @@
+﻿@model FirmaCurierat.Models.Adresa
+
+@{
+    ViewData["Title"] = "Editează Adresa";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Editează Adresa</h3>
+            
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                
+                <!-- ID Ascuns: Aici serverul află ce rând din baza de date actualizează -->
+                <input type="hidden" asp-for="Id_adresa" />
+
+                <div class="mb-3">
+                    <label asp-for="Tara" class="form-label">Țara</label>
+                    <input asp-for="Tara" class="form-control" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Judet" class="form-label">Județul</label>
+                        <input asp-for="Judet" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Localitate" class="form-label">Localitatea</label>
+                        <input asp-for="Localitate" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label asp-for="Strada" class="form-label">Strada</label>
+                        <input asp-for="Strada" class="form-control" required />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Numar" class="form-label">Numărul</label>
+                        <input asp-for="Numar" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">Anulează</a>
+                    <button type="submit" class="btn btn-primary">Salvează Modificările</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

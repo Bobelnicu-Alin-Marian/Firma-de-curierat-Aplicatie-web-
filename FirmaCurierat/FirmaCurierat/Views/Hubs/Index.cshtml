@@ -17,8 +17,7 @@
             <tr>
                 <th>Oraș</th>
                 <th>Capacitate</th>
-                <th>ID Adresă</th>
-                
+                <th>Acțiuni</th> <!-- Am pus un titlu aici -->
             </tr>
         </thead>
         <tbody>
@@ -27,7 +26,6 @@
                 <tr>
                     <td>@item.Oras</td>
                     <td>@item.Capacitate</td>
-                    <td>@item.Id_adresa</td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id_hub">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.Id_hub">Details</a> |

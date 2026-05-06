@@ -6,28 +6,68 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FirmaCurierat.Models;
-using FirmaCurierat.Services; // namespace-ul pentru Servicii
+using FirmaCurierat.Services;
 
 namespace FirmaCurierat.Controllers
 {
     public class ColeteController : Controller
     {
         private readonly IColetService _coletService;
+        private readonly IStatusLivrareService _statusService; 
 
-        // introducem serviciul prin constructor
-        public ColeteController(IColetService coletService)
+       
+        public ColeteController(IColetService coletService, IStatusLivrareService statusService)
         {
             _coletService = coletService;
+            _statusService = statusService;
         }
 
-        // GET: Colete
+       
         public async Task<IActionResult> Index()
         {
             var colete = await _coletService.GetAllColeteAsync();
             return View(colete);
         }
 
-        // GET: Colete/Details/5
+      
+        public async Task<IActionResult> Awb(string awbNumber)
+        {
+            ViewBag.AwbNumber = awbNumber;
+
+            if (string.IsNullOrEmpty(awbNumber))
+            {
+                return View();
+            }
+
+          
+            var colet = await _coletService.GetColetByAwbAsync(awbNumber);
+
+            if (colet != null)
+            {
+                
+                var istoric = await _statusService.GetIstoricByColetIdAsync(colet.Id_colet);
+                colet.Statusuri = istoric.ToList();
+            }
+
+            return View(colet);
+        }
+
+        // POST: Colete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateStatus(int id_colet, string awb, string denumire, string locatie)
+        {
+            if (id_colet <= 0 || string.IsNullOrEmpty(denumire))
+            {
+                return BadRequest("Date invalide.");
+            }
+
+            
+            await _statusService.AdaugaStatusNouAsync(id_colet, denumire, locatie);
+
+            return RedirectToAction("Awb", new { awbNumber = awb });
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -38,25 +78,28 @@ namespace FirmaCurierat.Controllers
             return View(colet);
         }
 
-        // GET: Colete/Create
+
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Colete/Create
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_colet,Pret,Greutate,Tip,Dimensiune")] Colet colet)
+ 
+        public async Task<IActionResult> Create([Bind("Greutate,Pret,Tip,Dimensiune,ZonaLivrare")] Colet colet)
         {
             try
             {
                 
                 await _coletService.AddColetAsync(colet);
 
+              
+                TempData["SuccessMessage"] = $"Coletul a fost adăugat cu succes! AWB: {colet.Awb} | Cost Livrare: {colet.CostLivrare} RON";
+
                 
-                TempData["SuccessMessage"] = "Coletul a fost adaugat cu succes! AWB: " + colet.Awb;
-                return View();
+                return RedirectToAction(nameof(Create));
             }
             catch (Exception ex)
             {
@@ -79,17 +122,19 @@ namespace FirmaCurierat.Controllers
         // POST: Colete/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_colet,Awb,Pret,Greutate,Dimensiune,Tip,Id_comanda")] Colet colet)
+       
+        public async Task<IActionResult> Edit(int id, [Bind("Id_colet,Awb,Pret,CostLivrare,ZonaLivrare,Greutate,Dimensiune,Tip,Id_comanda")] Colet colet)
         {
             if (id != colet.Id_colet) return NotFound();
 
             ModelState.Remove("Id_comanda");
+            ModelState.Remove("Statusuri");
+            ModelState.Remove("Tranzitari"); 
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Folosim serviciul pentru a face update
                     await _coletService.UpdateColetAsync(colet);
                     return RedirectToAction(nameof(Index));
                 }
@@ -119,7 +164,6 @@ namespace FirmaCurierat.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            // Folosim serviciul pentru stergere
             await _coletService.DeleteColetAsync(id);
             return RedirectToAction(nameof(Index));
         }

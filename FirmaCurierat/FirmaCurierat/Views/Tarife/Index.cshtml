@@ -1,38 +1,310 @@
 ﻿@model IEnumerable<FirmaCurierat.Models.Tarif>
 
 @{
-    ViewData["Title"] = "Tarife";
+    ViewData["Title"] = "Tarife Standard";
 }
 
-<div style="text-align: center; margin-bottom: 20px; margin-top: 20px;">
-    <a asp-action="Create" style="text-decoration: none; color: #007bff; font-weight: bold;">➕ Adaugă Tarif Nou</a>
+<style>
+    /* Stiluri generale */
+    .tarife-wrapper {
+        max-width: 1000px;
+        margin: auto;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .header-section {
+        text-align: center;
+        margin: 40px 0 30px;
+    }
+
+    .header-section h1 {
+        font-weight: 800;
+        color: #212529;
+        margin-bottom: 10px;
+    }
+
+    .header-section p {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+
+    /* Buton Adaugare */
+    .btn-add {
+        background-color: #212529;
+        color: #FFC107;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn-add:hover {
+        background-color: #FFC107;
+        color: #212529;
+        text-decoration: none;
+        transform: translateY(-2px);
+    }
+
+    /* Stiluri Tabel */
+    .table-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 0;
+    }
+
+    .custom-table th {
+        background-color: #FFC107;
+        color: #212529;
+        padding: 18px 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        border: none;
+    }
+
+    .custom-table td {
+        padding: 16px 15px;
+        vertical-align: middle;
+        color: #495057;
+        border-bottom: 1px solid #f8f9fa;
+        font-weight: 500;
+    }
+
+    .custom-table tbody tr {
+        transition: background-color 0.2s ease;
+    }
+
+    .custom-table tbody tr:hover {
+        background-color: #fffdf5;
+    }
+
+    /* Butoane Actiuni Tabel */
+    .action-btn {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        margin-left: 5px;
+        display: inline-block;
+    }
+
+    .btn-edit { background: #e6f2ff; color: #0d6efd; }
+    .btn-edit:hover { background: #0d6efd; color: white; }
+
+    .btn-details { background: #e0f8e9; color: #198754; }
+    .btn-details:hover { background: #198754; color: white; }
+
+    .btn-delete { background: #fde8e9; color: #dc3545; }
+    .btn-delete:hover { background: #dc3545; color: white; }
+
+    /* Nota informativa */
+    .info-note {
+        padding: 15px 20px;
+        background-color: #f8f9fa;
+        border-left: 5px solid #FFC107;
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Calculator Widget */
+    .calculator-widget {
+        background: linear-gradient(145deg, #ffffff, #fdfbf5);
+        border: 2px solid #FFC107;
+        border-radius: 12px;
+        padding: 35px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+        box-shadow: 0 10px 30px rgba(255, 193, 7, 0.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: border-color 0.3s;
+    }
+
+    .form-input:focus {
+        border-color: #FFC107;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+    }
+
+    .btn-calculate {
+        width: 100%;
+        padding: 13px;
+        background-color: #212529;
+        color: #FFC107;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-calculate:hover {
+        background-color: #343a40;
+        transform: translateY(-2px);
+    }
+
+    .result-box {
+        display: none;
+        margin-top: 30px;
+        text-align: center;
+        padding-top: 25px;
+        border-top: 2px dashed #f0e6c8;
+    }
+</style>
+
+<div class="tarife-wrapper">
+    
+    <div class="header-section">
+        <h1>Tarife Standard</h1>
+        <p>Prețuri transparente, fără costuri ascunse. Alege opțiunea potrivită pentru tine.</p>
+    </div>
+
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a asp-action="Create" class="btn-add">
+            ➕ Adaugă Tarif Nou
+        </a>
+    </div>
+
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Tip / Greutate Colet</th>
+                    <th style="text-align: center;">Local <br><small>(București/Ilfov)</small></th>
+                    <th style="text-align: center;">Național <br><small>(România)</small></th>
+                    <th style="text-align: center;">Internațional <br><small>(UE)</small></th>
+                    <th style="text-align: right; padding-right: 20px;">Acțiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="font-weight: bold; color: #212529;">@item.CategorieGreutate</td>
+                        <td style="text-align: center; font-weight: 600;">@item.PretLocal <small class="text-muted">RON</small></td>
+                        <td style="text-align: center; font-weight: 600;">@item.PretNational <small class="text-muted">RON</small></td>
+                        <td style="text-align: center; font-weight: 600;">@item.PretInternational <small class="text-muted">RON</small></td>
+                        
+                        <td style="text-align: right;">
+                            <a asp-action="Edit" asp-route-id="@item.Id_tarif" class="action-btn btn-edit">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id_tarif" class="action-btn btn-details">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id_tarif" class="action-btn btn-delete">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="info-note">
+        <strong>Notă:</strong> Tarifele includ TVA. Pentru coletele asigurate cu plata ramburs, se percepe o taxă suplimentară din valoarea declarată a coletului.
+    </div>
+
+    <div class="calculator-widget">
+        <h4 style="margin-top: 0; margin-bottom: 5px; color: #212529; font-weight: 800; font-size: 22px;">🧮 Estimare rapidă de cost</h4>
+        <p style="color: #6c757d; font-size: 15px; margin-bottom: 30px;">Introdu datele coletului tău pentru o estimare instantanee (bazată pe greutate).</p>
+
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end;">
+            
+            <div style="flex: 1; min-width: 200px;">
+                <label class="form-label">Zonă Destinație</label>
+                <select id="zona" class="form-input">
+                    <option value="local">Local (București/Ilfov)</option>
+                    <option value="national">Național (România)</option>
+                    <option value="international">Internațional (UE)</option>
+                </select>
+            </div>
+
+            <div style="flex: 1; min-width: 150px;">
+                <label class="form-label">Greutate (kg)</label>
+                <input type="number" id="greutate" class="form-input" placeholder="Ex: 5" min="0.1" step="0.1">
+            </div>
+
+            <div style="flex: 1; min-width: 150px;">
+                <button type="button" onclick="calculeazaCost()" class="btn-calculate">
+                    CALCULEAZĂ COST
+                </button>
+            </div>
+        </div>
+
+        <div id="rezultat-box" class="result-box">
+            <h3 style="margin: 0; color: #212529; font-size: 24px;">Cost Estimativ: <span id="pret-final" style="color: #d99a00; font-weight: 800; font-size: 32px;">0</span> RON</h3>
+            <p style="margin: 8px 0 0 0; color: #888; font-size: 13px;">*Aceasta este doar o estimare. Costul final va fi generat la plasarea comenzii.</p>
+        </div>
+    </div>
+
 </div>
 
-<table class="table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-    <thead>
-        <tr style="border-bottom: 2px solid #ddd;">
-            <th style="padding: 10px; text-align: left;">Categorie / Greutate</th>
-            <th style="padding: 10px; text-align: center;">Preț Local</th>
-            <th style="padding: 10px; text-align: center;">Preț Național</th>
-            <th style="padding: 10px; text-align: center;">Preț Internațional</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 15px 10px; font-weight: 500;">@item.CategorieGreutate</td>
-                <td style="padding: 15px 10px; text-align: center;">@item.PretLocal</td>
-                <td style="padding: 15px 10px; text-align: center;">@item.PretNational</td>
-                <td style="padding: 15px 10px; text-align: center;">@item.PretInternational</td>
-                
-                <td style="padding: 15px 10px; text-align: right;">
-                    <a asp-action="Edit" asp-route-id="@item.Id_tarif">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id_tarif">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id_tarif" style="color: red;">Delete</a>
-                </td>
-            </tr>
+@section Scripts {
+    <script>
+        function calculeazaCost() {
+            const zona = document.getElementById('zona').value;
+            const greutateInput = document.getElementById('greutate').value;
+            const divRezultat = document.getElementById('rezultat-box');
+            const spanPret = document.getElementById('pret-final');
+
+            const greutate = parseFloat(greutateInput);
+            if (isNaN(greutate) || greutate <= 0) {
+                alert("Te rugăm să introduci o greutate validă (ex: 1.5)!");
+                return;
+            }
+
+            let cost = 0;
+
+            if (zona === 'local') {
+                if (greutate <= 1) cost = 15;
+                else if (greutate <= 5) cost = 20;
+                else if (greutate <= 15) cost = 30;
+                else if (greutate <= 30) cost = 50;
+                else cost = 50 + Math.ceil(greutate - 30) * 2; 
+            }
+            else if (zona === 'national') {
+                if (greutate <= 1) cost = 20;
+                else if (greutate <= 5) cost = 30;
+                else if (greutate <= 15) cost = 45;
+                else if (greutate <= 30) cost = 75;
+                else cost = 75 + Math.ceil(greutate - 30) * 3; 
+            }
+            else if (zona === 'international') {
+                if (greutate <= 1) cost = 80;
+                else if (greutate <= 5) cost = 120;
+                else if (greutate <= 15) cost = 180;
+                else if (greutate <= 30) cost = 250;
+                else cost = 250 + Math.ceil(greutate - 30) * 10; 
+            }
+
+            spanPret.innerText = cost.toFixed(2); 
+            divRezultat.style.display = 'block'; 
         }
-    </tbody>
-</table>
+    </script>
+}

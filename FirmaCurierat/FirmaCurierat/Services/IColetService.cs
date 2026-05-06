@@ -11,5 +11,6 @@ namespace FirmaCurierat.Services
         Task AddColetAsync(Colet colet);
         Task UpdateColetAsync(Colet colet);
         Task DeleteColetAsync(int id);
+        Task<Colet> GetColetByAwbAsync(string awb);
     }
 }

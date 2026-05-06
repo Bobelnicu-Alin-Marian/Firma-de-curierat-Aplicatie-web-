@@ -1,0 +1,39 @@
+﻿@model FirmaCurierat.Models.Adresa
+
+@{
+    ViewData["Title"] = "Șterge Adresa";
+}
+
+<div class="container mt-4">
+    <div class="card border-danger shadow-sm" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">⚠️ Confirmare Ștergere</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title mb-4">Ești sigur că vrei să ștergi această adresă?</h5>
+            
+            <div class="bg-light p-3 rounded mb-4">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Țară / Județ</dt>
+                    <dd class="col-sm-8">@Model.Tara, @Model.Judet</dd>
+
+                    <dt class="col-sm-4">Localitate</dt>
+                    <dd class="col-sm-8">@Model.Localitate</dd>
+
+                    <dt class="col-sm-4">Stradă / Număr</dt>
+                    <dd class="col-sm-8">Str. @Model.Strada, Nr. @Model.Numar</dd>
+                </dl>
+            </div>
+
+            <form asp-action="Delete">
+                <!-- ID Ascuns: Aici serverul află ce rând șterge definitiv -->
+                <input type="hidden" asp-for="Id_adresa" />
+                
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Nu, du-mă înapoi</a>
+                    <button type="submit" class="btn btn-danger">Da, șterge definitiv</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

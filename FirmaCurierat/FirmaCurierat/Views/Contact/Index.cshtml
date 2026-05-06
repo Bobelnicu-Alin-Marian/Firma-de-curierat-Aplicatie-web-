@@ -1,0 +1,232 @@
+﻿@model IEnumerable<FirmaCurierat.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contactează-ne";
+}
+
+<style>
+   
+    .contact-wrapper {
+        max-width: 1000px;
+        margin: 40px auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .contact-header h1 {
+        font-weight: 800;
+        color: #212529;
+        margin-bottom: 10px;
+    }
+
+    .contact-header p {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+
+   
+    .contact-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .info-card {
+        background-color: #ffffff;
+        padding: 30px 20px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-bottom: 5px solid #212529;
+        transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-5px);
+        border-bottom-color: #FFC107;
+    }
+
+    .info-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .info-card h4 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .info-card p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .info-card small {
+        display: block;
+        margin-top: 5px;
+        font-size: 13px;
+        color: #666;
+        font-weight: normal;
+    }
+
+    .admin-actions {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px dashed #eee;
+    }
+
+    .btn-admin {
+        text-decoration: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0 5px;
+        display: inline-block;
+    }
+
+    .btn-edit { background: #e6f2ff; color: #007bff; }
+    .btn-edit:hover { background: #007bff; color: #fff; }
+
+    .btn-delete { background: #fde8e9; color: #dc3545; }
+    .btn-delete:hover { background: #dc3545; color: #fff; }
+
+    .btn-add-contact {
+        display: inline-block;
+        background-color: #FFC107;
+        color: #212529;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .btn-add-contact:hover {
+        background-color: #e0a800;
+    }
+
+  
+    .faq-section {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-title {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        color: #212529;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .faq-title::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        width: 80px;
+        height: 3px;
+        background-color: #FFC107;
+    }
+
+    .faq-item {
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    .faq-item summary {
+        padding: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        color: #333;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: #FFC107; font-size: 24px; font-weight: bold; }
+    .faq-item[open] summary::after { content: '-'; }
+
+    .faq-item p {
+        padding: 0 20px 20px 20px;
+        margin: 0;
+        color: #666;
+        line-height: 1.6;
+        border-top: 1px solid #eaeaea;
+        padding-top: 20px;
+    }
+</style>
+
+<div class="contact-wrapper">
+    <div class="contact-header">
+        <h1>Contactează-ne</h1>
+        <p>Suntem aici să te ajutăm!</p>
+    </div>
+
+
+    <div style="text-align: right;">
+        <a asp-action="Create" class="btn-add-contact">➕ Adaugă Metodă Contact</a>
+    </div>
+
+    
+    <div class="contact-cards-grid">
+        @foreach (var item in Model)
+        {
+            <div class="info-card">
+                <h4>@item.Metoda</h4>
+                <p>@item.Valoare</p>
+                
+                @if (!string.IsNullOrEmpty(item.Detalii))
+                {
+                    <small>@item.Detalii</small>
+                }
+
+                
+                <div class="admin-actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id_contact" class="btn-admin btn-edit">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id_contact" class="btn-admin btn-delete">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+
+  
+    <div class="faq-section">
+        <h3 class="faq-title">Întrebări Frecvente (FAQ)</h3>
+        
+        <details class="faq-item">
+            <summary>Cât durează livrarea unui colet standard?</summary>
+            <p>În mod normal, coletele standard sunt livrate în termen de 24-48 de ore lucrătoare de la preluarea acestora de către curierul nostru, oriunde în țară. Pentru destinațiile internaționale, timpul mediu este de 3-5 zile.</p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Cum pot modifica adresa de livrare?</summary>
+            <p>Dacă pachetul nu a fost încă predat curierului pentru livrarea finală (status "În tranzit"), poți contacta Call Center-ul nostru la 021 555 9999, oferind codul AWB pentru a actualiza gratuit adresa.</p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Ce fac dacă am primit coletul deteriorat?</summary>
+            <p>Te rugăm să ne contactezi pe adresa de email în termen de maxim 48 de ore de la primire, atașând poze cu ambalajul și conținutul. Echipa noastră va deschide imediat o procedură de despăgubire.</p>
+        </details>
+    </div>
+</div>

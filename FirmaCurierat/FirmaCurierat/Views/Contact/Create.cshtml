@@ -1,0 +1,44 @@
+﻿@model FirmaCurierat.Models.Contact
+
+@{
+    ViewData["Title"] = "Adaugă Contact Nou";
+}
+
+<div style="max-width: 600px; margin: 50px auto; padding: 40px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid #FFC107;">
+    <h2 style="margin-top: 0; margin-bottom: 30px; color: #212529; text-align: center;">Adaugă Metodă Contact</h2>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" style="color: #dc3545; margin-bottom: 15px;"></div>
+
+       
+
+        <div style="margin-bottom: 20px;">
+            <label asp-for="Metoda" style="display: block; font-weight: bold; margin-bottom: 8px; color: #333;"></label>
+            <input asp-for="Metoda" placeholder="Ex: Call Center" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 16px;" />
+            <span asp-validation-for="Metoda" style="color: #dc3545; font-size: 13px;"></span>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label asp-for="Valoare" style="display: block; font-weight: bold; margin-bottom: 8px; color: #333;"></label>
+            <input asp-for="Valoare" placeholder="Ex: 021 555 9999" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 16px;" />
+            <span asp-validation-for="Valoare" style="color: #dc3545; font-size: 13px;"></span>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label asp-for="Detalii" style="display: block; font-weight: bold; margin-bottom: 8px; color: #333;"></label>
+            <input asp-for="Detalii" placeholder="Ex: Luni - Vineri: 08:00 - 20:00" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 16px;" />
+            <span asp-validation-for="Detalii" style="color: #dc3545; font-size: 13px;"></span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a asp-action="Index" style="color: #6c757d; text-decoration: none; font-weight: bold;">← Înapoi la listă</a>
+            <button type="submit" style="background-color: #212529; color: #FFC107; border: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer;">Salveză Contactul</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

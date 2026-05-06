@@ -16,13 +16,16 @@ builder.Services.AddScoped<FirmaCurierat.Services.IColetService, FirmaCurierat.S
 builder.Services.AddScoped(typeof(FirmaCurierat.Repositories.IRepository<>), typeof(FirmaCurierat.Repositories.GenericRepository<>));
 builder.Services.AddScoped<FirmaCurierat.Services.IHubService, FirmaCurierat.Services.HubService>();
 builder.Services.AddScoped<ITarifService, TarifService>();
+builder.Services.AddScoped<IStatusLivrareService, StatusLivrareService>();
+builder.Services.AddScoped<IAdresaService, AdresaService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+  
     app.UseHsts();
 }
 

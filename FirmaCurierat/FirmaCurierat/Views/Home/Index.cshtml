@@ -1,13 +1,37 @@
-﻿<main>
+﻿@{
+    ViewData["Title"] = "Acasă";
+}
+
+<main>
     <section class="hero">
         <h1>Livrăm oriunde, rapid și sigur!</h1>
         <p>Introdu numărul de AWB pentru a afla instant statusul coletului tău.</p>
             
+        <!-- Formularul conectat la ColeteController -->
         <div class="search-awb">
-            <input type="text" placeholder="Ex: 1234567890" aria-label="Număr AWB">
-            <button type="button" onclick="window.location.href='awb.html'">Caută Colet</button>
+            <form asp-controller="Colete" asp-action="Awb" method="get" style="display: flex; justify-content: center; width: 100%;">
+                <!-- Name="awbNumber" este crucial pentru a lega valoarea de controller -->
+                <input type="text" name="awbNumber" placeholder="Ex: 1234567890" aria-label="Număr AWB" required style="margin-right: 10px;">
+                <button type="submit">Caută Colet</button>
+            </form>
         </div>
     </section>
+
+    <!-- Adauga adrese -->
+    <section class="address-action" style="margin: 60px auto; max-width: 800px; text-align: center; padding: 40px 20px; background-color: #f8f9fa; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <div style="font-size: 3.5rem; margin-bottom: 15px;">📍</div>
+        <h2 style="font-weight: bold; margin-bottom: 10px;">Adaugă adresele tale</h2>
+        <p style="color: #6c757d; font-size: 1.1rem; margin-bottom: 25px;">
+            Salvează adresele tale frecvente (acasă, birou) pentru a trimite colete mult mai rapid pe viitor.
+        </p>
+        
+        <!-- Butonul care trimite direct la formularul de creare -->
+        <a asp-controller="Adrese" asp-action="Create" style="display: inline-block; padding: 12px 30px; font-size: 1.1rem; font-weight: bold; color: #fff; background-color: #28a745; text-decoration: none; border-radius: 30px; transition: 0.3s;">
+            + Adaugă o adresă nouă
+        </a>
+    </section>
+
+    <!-- Beneficii -->
     <section class="features">
         <h2>De ce să alegi CurierRapid?</h2>
             

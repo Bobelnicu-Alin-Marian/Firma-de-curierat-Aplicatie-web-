@@ -1,0 +1,60 @@
+﻿@model FirmaCurierat.Models.Adresa
+
+@{
+    ViewData["Title"] = "Adaugă Adresă";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm" style="max-width: 600px; margin: 0 auto;">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Adaugă o adresă nouă</h3>
+            
+            @if (TempData["MesajSucces"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MesajSucces"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+           
+            <form asp-action="Create" method="post">
+                
+                
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Tara" class="form-label">Țara</label>
+                    <input asp-for="Tara" class="form-control" value="România" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Judet" class="form-label">Județul</label>
+                        <input asp-for="Judet" class="form-control" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Localitate" class="form-label">Localitatea</label>
+                        <input asp-for="Localitate" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label asp-for="Strada" class="form-label">Strada</label>
+                        <input asp-for="Strada" class="form-control" required />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Numar" class="form-label">Numărul</label>
+                        <input asp-for="Numar" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary">Înapoi la Adrese Salvate</a>
+                    <button type="submit" class="btn btn-success">Salvează Adresa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

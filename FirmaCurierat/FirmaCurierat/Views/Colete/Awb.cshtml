@@ -1,0 +1,124 @@
+﻿@model FirmaCurierat.Models.Colet
+
+@{
+    ViewData["Title"] = "Urmărire AWB";
+    var awbCautat = ViewBag.AwbNumber as string;
+}
+
+<main>
+    <section class="awb-section">
+        <h2>Urmărire Colet</h2>
+        <p class="subtitle">Introdu codul AWB format din 11 cifre pentru a vedea statusul livrării.</p>
+
+        <form class="search-container" asp-controller="Colete" asp-action="Awb" method="get">
+            <input type="text" id="awb-input" name="awbNumber" placeholder="Ex: 01234567890" value="@awbCautat" required>
+            <button type="submit" class="btn-search-awb">Caută Colet</button>
+        </form>
+
+        @if (Model != null)
+        {
+            <div class="tracking-card">
+                <div class="tracking-header">
+                    <h3>
+                        Status actual:
+                        <span class="status-badge">
+                            @(Model.Statusuri.Any() ? Model.Statusuri.OrderByDescending(s => s.Data_actualizare).First().Denumire : "Înregistrat")
+                        </span>
+                    </h3>
+                    <p>AWB: <strong>@Model.Awb</strong> | Destinație: <strong>Validată</strong></p>
+                </div>
+
+                <div class="timeline">
+                    
+                    <div class="timeline-step completed">
+                        <div class="step-icon">✓</div>
+                        <div class="step-info">
+                            <h4>Comandă înregistrată</h4>
+                            <p>Detalii: @Model.Greutate kg, Dimensiune: @Model.Dimensiune, Tip: @Model.Tip</p>
+                        </div>
+                    </div>
+
+                   
+                    @if (Model.Statusuri != null && Model.Statusuri.Any())
+                    {
+                        var listaStatusuri = Model.Statusuri.OrderBy(s => s.Data_actualizare).ToList();
+                        
+                        for (int i = 0; i < listaStatusuri.Count; i++)
+                        {
+                            var s = listaStatusuri[i];
+                            bool esteUltimul = (i == listaStatusuri.Count - 1);
+                            
+                          
+                            var clasaStep = esteUltimul ? "active" : "completed";
+                            var iconita = esteUltimul ? "🚚" : "✓";
+
+                            <div class="timeline-step @clasaStep">
+                                <div class="step-icon">@iconita</div>
+                                <div class="step-info">
+                                    <h4>@s.Denumire</h4>
+                                    <p>
+                                        <strong>Locație:</strong> @(string.IsNullOrEmpty(s.Locatie) ? "Centru Logistic" : s.Locatie) <br />
+                                        <small style="color: #666;">Actualizat la: @s.Data_actualizare.ToString("dd.MM.yyyy HH:mm")</small>
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="timeline-step pending">
+                            <div class="step-icon">📦</div>
+                            <div class="step-info">
+                                <h4>În așteptare preluare</h4>
+                                <p>Coletul a fost înregistrat și urmează să fie preluat de curier.</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Update status -->
+            <div class="card mt-4 shadow" style="border: 2px solid #007bff; border-radius: 8px; margin-top: 40px; text-align: left;">
+                <div class="card-header" style="background-color: #007bff; padding: 10px 15px;">
+                    <h5 style="margin: 0; color: white; font-family: sans-serif;">⚙️ Panou de Control (Interfață Curier)</h5>
+                </div>
+                <div class="card-body" style="padding: 20px; background-color: #f8f9fa;">
+                    <form asp-controller="Colete" asp-action="UpdateStatus" method="post" style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+                        <input type="hidden" name="id_colet" value="@Model.Id_colet" />
+                        <input type="hidden" name="awb" value="@Model.Awb" />
+
+                        <div style="flex: 1; min-width: 200px;">
+                            <label style="font-weight: bold; margin-bottom: 5px; display: block; font-size: 14px;">Noul Status:</label>
+                            <select name="denumire" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;" required>
+                                <option value="">-- Alege statusul --</option>
+                                <option value="Preluat de la expeditor">Preluat de la expeditor</option>
+                                <option value="În tranzit">În tranzit</option>
+                                <option value="Ajuns în depozit local">Ajuns în depozit local</option>
+                                <option value="Predat curierului pentru livrare">Spre destinatar</option>
+                                <option value="Livrat cu succes">Livrat cu succes</option>
+                            </select>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 200px;">
+                            <label style="font-weight: bold; margin-bottom: 5px; display: block; font-size: 14px;">Locație / HUB:</label>
+                            <input type="text" name="locatie" placeholder="Ex: Depozit Târgu Jiu" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc;" required />
+                        </div>
+
+                        <div>
+                            <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">
+                                Actualizează Status
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else if (!string.IsNullOrEmpty(awbCautat))
+        {
+            <div style="margin-top: 30px; padding: 20px; background-color: #ffeaea; border-left: 5px solid #d9534f; border-radius: 8px; text-align: left;">
+                <h4 style="color: #d9534f; margin-bottom: 5px;">Colet negăsit</h4>
+                <p style="color: #555; margin: 0;">AWB-ul <strong>@awbCautat</strong> nu există. Verifică datele și încearcă din nou.</p>
+            </div>
+        }
+    </section>
+</main>

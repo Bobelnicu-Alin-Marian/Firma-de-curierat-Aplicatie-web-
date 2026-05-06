@@ -9,9 +9,15 @@
             <fieldset class="parcel-details">
                 <legend>Configurare Prețuri</legend>
                 
-                <div class="form-group">
-                    <label asp-for="CategorieGreutate">Denumire Categorie (ex: Plic max 1kg)</label>
-                    <input asp-for="CategorieGreutate" placeholder="Introdu descrierea..." required>
+               
+                <div class="form-group" style="margin-top:15px;">
+                    <label>Tip Colet</label>
+                    <select asp-for="CategorieGreutate">
+                        <option value="Plic">Plic (max 1kg)</option>
+                        <option value="Standard" selected>Colet Standard</option>
+                        <option value="Fragil">Colet Fragil</option>
+                        <option value="Voluminos">Colet Voluminos</option>
+                    </select>
                 </div>
 
                 <div class="form-group-inline" style="display:flex; gap:15px; margin-top:20px;">
