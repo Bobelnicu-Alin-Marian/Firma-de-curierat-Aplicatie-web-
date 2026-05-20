@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace FirmaCurierat.Models
 {
-    public class FirmaCurieratContext : DbContext
+    public class FirmaCurieratContext : IdentityDbContext<ApplicationUser>
     {
         public FirmaCurieratContext(DbContextOptions<FirmaCurieratContext> options) : base(options)
         {
@@ -29,7 +30,7 @@ namespace FirmaCurierat.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Colet>().Property(c => c.Pret).HasPrecision(18, 2);
             modelBuilder.Entity<Colet>().Property(c => c.Greutate).HasPrecision(18, 2);
             modelBuilder.Entity<Factura>().Property(f => f.Valoare).HasPrecision(18, 2);
