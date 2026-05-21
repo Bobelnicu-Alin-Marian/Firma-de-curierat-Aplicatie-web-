@@ -601,7 +601,6 @@ C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCuriera
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\scopedcss\bundle\FirmaCurierat.styles.css
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\scopedcss\projectbundle\FirmaCurierat.bundle.scp.css
-C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\p8zv9o6yzr-{0}-xbuhdtfpqs-xbuhdtfpqs.gz
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\3hcgh8jaau-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\i9kxs3lrfj-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\m74mtphzpo-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -670,7 +669,6 @@ C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCuriera
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\FirmaCur.78D61706.Up2Date
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\FirmaCurierat.dll
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\refint\FirmaCurierat.dll
@@ -742,3 +740,5 @@ C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCuriera
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\nezrqnk58p-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\v0zgfp0y55-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\compressed\p8zv9o6yzr-{0}-edehvxxfa3-edehvxxfa3.gz
+C:\Users\MXB\Desktop\Firma-de-curierat-Aplicatie-web-\FirmaCurierat\FirmaCurierat\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

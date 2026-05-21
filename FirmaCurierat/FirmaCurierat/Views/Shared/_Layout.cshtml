@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@using FirmaCurierat.Models
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,16 +26,28 @@
             <ul class="nav-links">
                 <li><a asp-controller="Home" asp-action="Index">Acasă</a></li>
                 <li><a asp-controller="Colete" asp-action="Awb">Urmărire AWB</a></li>
-                <li><a asp-controller="Colete" asp-action="Create">Expediază</a></li>
-                <li><a  asp-controller="Tarife" asp-action="Index">Tarife</a></li>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li><a asp-controller="Colete" asp-action="Create">Expediază</a></li>
+                }
+
+                <li><a asp-controller="Tarife" asp-action="Index">Tarife</a></li>
                 <li><a asp-controller="Hubs" asp-action="Index">Rețea</a></li>
-                <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li><a asp-controller="Contact" asp-action="Index">Contacte</a></li>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><a asp-controller="Utilizatori" asp-action="Index">Utilizatori</a></li>
+                }
             </ul>
+
             <div class="user-menu">
                 <partial name="_LoginPartial" />
-            </div>
-            <div class="user-menu">
-                <a asp-controller="Home" asp-action="Profil" class="btn-profil">Profilul Meu</a>
             </div>
         </nav>
     </header>

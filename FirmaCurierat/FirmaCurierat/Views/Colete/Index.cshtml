@@ -1,65 +1,119 @@
-﻿@model IEnumerable<FirmaCurierat.Models.Colet>
+@model IEnumerable<FirmaCurierat.Models.Colet>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = ViewBag.Titlu ?? "Colete";
+    bool esteAdmin = ViewBag.EsteAdmin == true;
 }
 
-<h1>Index</h1>
+<div style="max-width:1100px;margin:40px auto;padding:0 20px;">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Awb)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pret)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Greutate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dimensiune)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tip)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CostLivrare)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Awb)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pret)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Greutate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dimensiune)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CostLivrare)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id_colet">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id_colet">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id_colet">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    @* ── Header ── *@
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:15px;">
+        <div>
+            <h2 style="margin:0;font-size:26px;font-weight:900;color:#212529;">
+                @if (esteAdmin)
+                {
+                    <span>📦 Toate Coletele</span>
+                }
+                else
+                {
+                    <span>📦 Coletele Mele</span>
+                }
+            </h2>
+            <p style="margin:4px 0 0;color:#888;font-size:14px;">
+                @Model.Count() colet(e) găsite
+            </p>
+        </div>
+        <a asp-action="Create"
+           style="background:#212529;color:#FFC107;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:14px;">
+            🚀 Expediază Colet Nou
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div style="text-align:center;padding:60px 20px;background:#f8f9fa;border-radius:12px;border:2px dashed #dee2e6;">
+            <div style="font-size:48px;margin-bottom:15px;">📭</div>
+            <h3 style="color:#6c757d;margin-bottom:10px;">
+                @if (esteAdmin) { <span>Nu există colete înregistrate</span> }
+                else { <span>Nu ai niciun colet înregistrat</span> }
+            </h3>
+            <p style="color:#aaa;margin-bottom:20px;">Apasă butonul de mai sus pentru a crea prima expediere.</p>
+        </div>
+    }
+    else
+    {
+        <div style="background:#fff;border-radius:12px;border:1px solid #eee;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#212529;color:#fff;">
+                        <th style="padding:14px 20px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">AWB</th>
+                        <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Tip</th>
+                        <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Dimensiune</th>
+                        <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Greutate</th>
+                        <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Zonă</th>
+                        <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Status</th>
+                        <th style="padding:14px 16px;text-align:right;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Cost</th>
+                        <th style="padding:14px 20px;text-align:center;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#fffef5'" onmouseout="this.style.background='#fff'">
+                            <td style="padding:14px 20px;">
+                                <span style="font-family:monospace;font-weight:700;font-size:13px;color:#212529;letter-spacing:1px;">
+                                    @item.Awb
+                                </span>
+                            </td>
+                            <td style="padding:14px 16px;">
+                                <span style="background:#e9ecef;color:#495057;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;">
+                                    @item.Tip
+                                </span>
+                            </td>
+                            <td style="padding:14px 16px;color:#666;font-size:14px;">@(item.Dimensiune ?? "—")</td>
+                            <td style="padding:14px 16px;color:#666;font-size:14px;">@item.Greutate kg</td>
+                            <td style="padding:14px 16px;color:#666;font-size:14px;">@item.ZonaLivrare</td>
+                            <td style="padding:14px 16px;">
+                                @{
+                                    var status = item.Comanda?.Status ?? "—";
+                                    var badgeColor = status switch
+                                    {
+                                        "Înregistrată" => "#FFC107",
+                                        "În tranzit"   => "#17a2b8",
+                                        "Livrată"      => "#28a745",
+                                        "Returnată"    => "#dc3545",
+                                        _ => "#6c757d"
+                                    };
+                                }
+                                <span style="background:@badgeColor;color:@(badgeColor == "#FFC107" ? "#212529" : "#fff");padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;">
+                                    @status
+                                </span>
+                            </td>
+                            <td style="padding:14px 16px;text-align:right;font-weight:700;color:#FFC107;font-size:15px;">
+                                @item.CostLivrare.ToString("F2") RON
+                            </td>
+                            <td style="padding:14px 20px;text-align:center;white-space:nowrap;">
+                                <a asp-action="Details" asp-route-id="@item.Id_colet"
+                                   style="padding:5px 12px;background:#f8f9fa;color:#333;border-radius:5px;text-decoration:none;font-size:13px;border:1px solid #ddd;margin-right:5px;">
+                                    🔍 Detalii
+                                </a>
+                                @if (esteAdmin)
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id_colet"
+                                       style="padding:5px 12px;background:#212529;color:#FFC107;border-radius:5px;text-decoration:none;font-size:13px;margin-right:5px;">
+                                        ✏️ Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id_colet"
+                                       style="padding:5px 12px;background:#dc3545;color:#fff;border-radius:5px;text-decoration:none;font-size:13px;">
+                                        🗑️
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

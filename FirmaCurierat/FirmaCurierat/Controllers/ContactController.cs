@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using FirmaCurierat.Models;
 using FirmaCurierat.Services;
 
 namespace FirmaCurierat.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         private readonly IContactService _contactService;
@@ -14,7 +16,7 @@ namespace FirmaCurierat.Controllers
             _contactService = contactService;
         }
 
-      
+
         public async Task<IActionResult> Index()
         {
             var contacte = await _contactService.GetAllContacteAsync();
@@ -22,10 +24,12 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Contact/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create() => View();
 
         // POST: Contact/Create
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id_contact,Metoda,Valoare,Detalii")] Contact contact)
         {
@@ -38,6 +42,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Contact/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -48,6 +53,7 @@ namespace FirmaCurierat.Controllers
 
         // POST: Contact/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id_contact,Metoda,Valoare,Detalii")] Contact contact)
         {
@@ -62,6 +68,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Contact/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -72,6 +79,7 @@ namespace FirmaCurierat.Controllers
 
         // POST: Contact/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

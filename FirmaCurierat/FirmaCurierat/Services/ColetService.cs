@@ -1,5 +1,6 @@
 ﻿using FirmaCurierat.Models;
 using FirmaCurierat.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,13 @@ namespace FirmaCurierat.Services
     {
         private readonly IRepository<Colet> _repository;
         private readonly IRepository<Tarif> _tarifRepository;
+        private readonly FirmaCurieratContext _context;
 
-        public ColetService(IRepository<Colet> repository, IRepository<Tarif> tarifRepository)
+        public ColetService(IRepository<Colet> repository, IRepository<Tarif> tarifRepository, FirmaCurieratContext context)
         {
             _repository = repository;
             _tarifRepository = tarifRepository;
+            _context = context;
         }
 
         public async Task<IEnumerable<Colet>> GetAllColeteAsync() { return await _repository.GetAllAsync(); }
@@ -23,6 +26,38 @@ namespace FirmaCurierat.Services
         public async Task UpdateColetAsync(Colet colet) { await _repository.UpdateAsync(colet); }
         public async Task DeleteColetAsync(int id) { var c = await _repository.GetByIdAsync(id); if (c != null) await _repository.DeleteAsync(c); }
         public async Task<Colet> GetColetByAwbAsync(string awb) { var colete = await _repository.GetAllAsync(); return colete.FirstOrDefault(c => c.Awb == awb); }
+
+        public async Task<Colet?> GetColetCuDetaliiAsync(int id)
+        {
+            return await _context.Colete
+                .Include(c => c.Comanda)
+                    .ThenInclude(com => com!.Expeditor)
+                .Include(c => c.Comanda)
+                    .ThenInclude(com => com!.Destinatar)
+                .Include(c => c.Comanda)
+                    .ThenInclude(com => com!.AdresaRidicare)
+                .Include(c => c.Comanda)
+                    .ThenInclude(com => com!.AdresaLivrare)
+                .Include(c => c.Statusuri)
+                .FirstOrDefaultAsync(c => c.Id_colet == id);
+        }
+
+        // Returnează toate coletele cu Comanda inclusă (pentru pagina Index/Admin)
+        public async Task<IEnumerable<Colet>> GetAllColeteWithComandaAsync()
+        {
+            return await _context.Colete
+                .Include(c => c.Comanda)
+                .ToListAsync();
+        }
+
+        // Returnează doar coletele create de un anumit utilizator Identity
+        public async Task<IEnumerable<Colet>> GetColeteByUserIdAsync(string userId)
+        {
+            return await _context.Colete
+                .Include(c => c.Comanda)
+                .Where(c => c.Comanda != null && c.Comanda.ApplicationUserId == userId)
+                .ToListAsync();
+        }
 
         public async Task AddColetAsync(Colet colet)
         {

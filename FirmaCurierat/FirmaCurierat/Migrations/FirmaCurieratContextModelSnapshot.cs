@@ -53,6 +53,9 @@ namespace FirmaCurierat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id_adresa");
 
                     b.HasIndex("Id_client");
@@ -123,6 +126,9 @@ namespace FirmaCurierat.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<string>("Nume")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -134,6 +140,9 @@ namespace FirmaCurierat.Migrations
 
                     b.Property<byte[]>("PozaProfil")
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Prenume")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -174,6 +183,9 @@ namespace FirmaCurierat.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Telefon")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id_client");
 
                     b.ToTable("Clienti");
@@ -195,6 +207,7 @@ namespace FirmaCurierat.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("CostLivrare")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Dimensiune")
@@ -242,8 +255,8 @@ namespace FirmaCurierat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_comanda"));
 
-                    b.Property<int>("HubId_hub")
-                        .HasColumnType("int");
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Id_adresa_livrare")
                         .HasColumnType("int");
@@ -272,8 +285,6 @@ namespace FirmaCurierat.Migrations
 
                     b.HasKey("Id_comanda");
 
-                    b.HasIndex("HubId_hub");
-
                     b.HasIndex("Id_adresa_livrare");
 
                     b.HasIndex("Id_adresa_ridicare");
@@ -283,6 +294,8 @@ namespace FirmaCurierat.Migrations
                     b.HasIndex("Id_destinatar");
 
                     b.HasIndex("Id_expeditor");
+
+                    b.HasIndex("Id_hub");
 
                     b.HasIndex("Id_operator");
 
@@ -433,12 +446,15 @@ namespace FirmaCurierat.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PretInternational")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PretLocal")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PretNational")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id_tarif");
@@ -673,9 +689,8 @@ namespace FirmaCurierat.Migrations
                 {
                     b.HasOne("FirmaCurierat.Models.Hub", "Hub")
                         .WithMany("Comenzi")
-                        .HasForeignKey("HubId_hub")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Id_hub")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("FirmaCurierat.Models.Adresa", "AdresaLivrare")
                         .WithMany()

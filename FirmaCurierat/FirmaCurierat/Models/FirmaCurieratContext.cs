@@ -33,7 +33,11 @@ namespace FirmaCurierat.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Colet>().Property(c => c.Pret).HasPrecision(18, 2);
             modelBuilder.Entity<Colet>().Property(c => c.Greutate).HasPrecision(18, 2);
+            modelBuilder.Entity<Colet>().Property(c => c.CostLivrare).HasPrecision(18, 2);
             modelBuilder.Entity<Factura>().Property(f => f.Valoare).HasPrecision(18, 2);
+            modelBuilder.Entity<Tarif>().Property(t => t.PretLocal).HasPrecision(18, 2);
+            modelBuilder.Entity<Tarif>().Property(t => t.PretNational).HasPrecision(18, 2);
+            modelBuilder.Entity<Tarif>().Property(t => t.PretInternational).HasPrecision(18, 2);
 
 
             modelBuilder.Entity<Tranziteaza>()
@@ -67,10 +71,15 @@ namespace FirmaCurierat.Models
                 .HasOne(c => c.Destinatar).WithMany(cl => cl.ComenziPrimite).HasForeignKey(c => c.Id_destinatar).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Comanda>()
-                .HasOne(c => c.Operator).WithMany().HasForeignKey(c => c.Id_operator).OnDelete(DeleteBehavior.Restrict);
+                .HasOne(c => c.Operator).WithMany().HasForeignKey(c => c.Id_operator).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Comanda>()
-                .HasOne(c => c.Curier).WithMany().HasForeignKey(c => c.Id_curier).OnDelete(DeleteBehavior.Restrict);
+                .HasOne(c => c.Curier).WithMany().HasForeignKey(c => c.Id_curier).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
+
+            // Hub.Comenzi leagă explicit cele două navigări într-o singură relație
+            // eliminând coloana shadow HubId_hub generată prin convenție
+            modelBuilder.Entity<Comanda>()
+                .HasOne(c => c.Hub).WithMany(h => h.Comenzi).HasForeignKey(c => c.Id_hub).IsRequired(false).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Factura>()
                 .HasOne(f => f.Comanda).WithMany(c => c.Facturi).HasForeignKey(f => f.Id_comanda).OnDelete(DeleteBehavior.Restrict);

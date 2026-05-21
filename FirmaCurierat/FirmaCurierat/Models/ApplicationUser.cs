@@ -5,7 +5,8 @@ namespace FirmaCurierat.Models
     // mostenim IdentityUser
     public class ApplicationUser : IdentityUser
     {
-        // poza profil
         public byte[]? PozaProfil { get; set; }
+        public string? Nume { get; set; }
+        public string? Prenume { get; set; }
     }
 }

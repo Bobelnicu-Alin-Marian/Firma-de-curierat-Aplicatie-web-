@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using FirmaCurierat.Models;
 using FirmaCurierat.Services;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Tarife/Create (Afiseaza formularul gol pentru adaaugare)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -29,6 +31,7 @@ namespace FirmaCurierat.Controllers
         // POST: Tarife/Create (Primeste datele din formular și le salveaza)
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id_tarif,CategorieGreutate,PretLocal,PretNational,PretInternational")] Tarif tarif)
         {
             if (ModelState.IsValid)
@@ -41,6 +44,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Tarife/Edit/5 (Afisează formularul completat cu datele existente)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -54,6 +58,7 @@ namespace FirmaCurierat.Controllers
         // POST: Tarife/Edit/5 (Salveaza modificarile)
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id_tarif,CategorieGreutate,PretLocal,PretNational,PretInternational")] Tarif tarif)
         {
             if (id != tarif.Id_tarif) return NotFound();
@@ -68,6 +73,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Tarife/Delete/5 (Afiseaza pagina de confirmare a stergerii)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -81,6 +87,7 @@ namespace FirmaCurierat.Controllers
         // POST: Tarife/Delete/5 (Executa stergerea propriu-zisa)
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _tarifService.DeleteTarifAsync(id);
@@ -88,6 +95,7 @@ namespace FirmaCurierat.Controllers
             return RedirectToAction(nameof(Index));
         }
         // GET: Tarife/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();

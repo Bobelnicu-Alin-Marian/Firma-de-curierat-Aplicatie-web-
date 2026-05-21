@@ -26,17 +26,20 @@ namespace FirmaCurierat.Models
 
         // Legături Angajați (am folosit 'int?' pentru a putea fi Nule până când comanda e preluată)
         public int? Id_operator { get; set; }
-        public Operator Operator { get; set; }
+        public Operator? Operator { get; set; }
 
         public int? Id_curier { get; set; }
-        public Curier Curier { get; set; }
+        public Curier? Curier { get; set; }
 
         // Legătură Hub
         public int? Id_hub { get; set; }
-        public Hub Hub { get; set; }
+        public Hub? Hub { get; set; }
+
+        // Utilizatorul Identity care a creat comanda (expeditorul logat)
+        public string? ApplicationUserId { get; set; }
 
         // Colecții
-        public ICollection<Colet> Colete { get; set; }
-        public ICollection<Factura> Facturi { get; set; }
+        public ICollection<Colet> Colete { get; set; } = new List<Colet>();
+        public ICollection<Factura> Facturi { get; set; } = new List<Factura>();
     }
 }

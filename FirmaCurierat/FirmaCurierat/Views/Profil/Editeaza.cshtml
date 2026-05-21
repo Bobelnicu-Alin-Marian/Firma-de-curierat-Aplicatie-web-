@@ -1,0 +1,82 @@
+@model FirmaCurierat.Models.ViewModels.EditProfilViewModel
+
+@{
+    ViewData["Title"] = "Editează Profil";
+}
+
+<div class="shipping-section">
+    <h2>Editează Profilul</h2>
+    <p class="subtitle">Modifică datele tale personale și apasă Salvează.</p>
+
+    <form asp-controller="Profil" asp-action="Editeaza" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div style="display:flex; align-items:center; gap:30px; margin-bottom:30px; padding:20px; background:#f8f9fa; border-radius:10px; border-left:4px solid #ffcc00;">
+            <img src="@Url.Action("GetPoza", "Profil")"
+                 class="avatar-img"
+                 id="preview-poza"
+                 alt="Fotografie profil"
+                 style="width:90px; height:90px;" />
+            <div>
+                <label asp-for="PozaProfilFile" style="display:block; font-weight:bold; margin-bottom:8px; color:#444;">
+                    @(Model.ArePoza ? "Schimbă fotografia de profil" : "Adaugă fotografie de profil")
+                </label>
+                <input asp-for="PozaProfilFile"
+                       type="file"
+                       accept="image/*"
+                       class="form-control"
+                       style="max-width:320px;"
+                       onchange="previewImage(this)" />
+                <small style="color:#888; font-size:12px; display:block; margin-top:5px;">
+                    Formate acceptate: JPG, PNG, GIF. Max 5 MB.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label asp-for="Prenume"></label>
+                <input asp-for="Prenume" class="form-control" placeholder="ex: Ion" />
+                <span asp-validation-for="Prenume" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Nume"></label>
+                <input asp-for="Nume" class="form-control" placeholder="ex: Popescu" />
+                <span asp-validation-for="Nume" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="ex: ion@exemplu.ro" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="ex: 0722123456" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div style="display:flex; gap:15px; margin-top:10px;">
+            <button type="submit" class="btn-submit" style="width:auto; padding:15px 40px;">Salvează</button>
+            <a asp-controller="Profil" asp-action="Index" class="btn-submit" style="width:auto; padding:15px 40px; background-color:#888; text-decoration:none; text-align:center;">Anulează</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('preview-poza').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}

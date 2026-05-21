@@ -184,9 +184,12 @@
     </div>
 
 
-    <div style="text-align: right;">
-        <a asp-action="Create" class="btn-add-contact">➕ Adaugă Metodă Contact</a>
-    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div style="text-align: right;">
+            <a asp-action="Create" class="btn-add-contact">➕ Adaugă Metodă Contact</a>
+        </div>
+    }
 
     
     <div class="contact-cards-grid">
@@ -201,11 +204,13 @@
                     <small>@item.Detalii</small>
                 }
 
-                
-                <div class="admin-actions">
-                    <a asp-action="Edit" asp-route-id="@item.Id_contact" class="btn-admin btn-edit">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id_contact" class="btn-admin btn-delete">Delete</a>
-                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="admin-actions">
+                        <a asp-action="Edit" asp-route-id="@item.Id_contact" class="btn-admin btn-edit">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id_contact" class="btn-admin btn-delete">Delete</a>
+                    </div>
+                }
             </div>
         }
     </div>

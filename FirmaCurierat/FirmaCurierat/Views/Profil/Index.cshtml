@@ -1,0 +1,210 @@
+@model FirmaCurierat.Models.ViewModels.ProfilViewModel
+@using FirmaCurierat.Models
+
+@{
+    ViewData["Title"] = "Profilul Meu";
+    var numeComplet = $"{Model.Prenume} {Model.Nume}".Trim();
+    if (string.IsNullOrWhiteSpace(numeComplet)) numeComplet = Model.Email ?? "Utilizator";
+    bool esteAdmin = ViewBag.EsteAdmin == true;
+    var colete = ViewBag.Colete as List<Colet> ?? new List<Colet>();
+    var adrese  = ViewBag.Adrese as List<Adresa> ?? new List<Adresa>();
+}
+
+<div style="max-width:900px;margin:40px auto;padding:0 20px;">
+
+    @if (TempData["Succes"] != null)
+    {
+        <div style="background:#d4edda;color:#155724;padding:12px 18px;border-radius:8px;margin-bottom:20px;border:1px solid #c3e6cb;">
+            ✅ @TempData["Succes"]
+        </div>
+    }
+
+    @* ── Card profil ── *@
+    <div style="background:#fff;border-radius:12px;border:1px solid #eee;box-shadow:0 2px 10px rgba(0,0,0,.05);padding:30px;margin-bottom:30px;">
+        <div style="display:flex;align-items:center;gap:25px;flex-wrap:wrap;">
+
+            @* Avatar *@
+            <img src="@Url.Action("GetPoza", "Profil")"
+                 class="avatar-img"
+                 style="width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid #FFC107;flex-shrink:0;"
+                 alt="Fotografie profil" />
+
+            @* Info *@
+            <div style="flex:1;min-width:200px;">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;">
+                    <h2 style="margin:0;font-size:22px;font-weight:900;color:#212529;">@numeComplet</h2>
+                    @if (esteAdmin)
+                    {
+                        <span style="background:#FFC107;color:#212529;padding:3px 12px;border-radius:12px;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;">⚙️ Admin</span>
+                    }
+                    else
+                    {
+                        <span style="background:#e9ecef;color:#495057;padding:3px 12px;border-radius:12px;font-size:12px;font-weight:600;">👤 User</span>
+                    }
+                </div>
+                <div style="color:#555;font-size:14px;margin-bottom:4px;">📧 @(Model.Email ?? "—")</div>
+                <div style="color:#555;font-size:14px;">📞 @(string.IsNullOrWhiteSpace(Model.PhoneNumber) ? "Telefon necompletat" : Model.PhoneNumber)</div>
+            </div>
+
+            @* Butoane *@
+            <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
+                <a asp-controller="Profil" asp-action="Editeaza"
+                   style="padding:9px 20px;background:#212529;color:#FFC107;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;">
+                    ✏️ Editează Profilul
+                </a>
+                <form asp-area="Identity" asp-page="/Account/Logout"
+                      asp-route-returnUrl="@Url.Action("Index","Home",new{area=""})"
+                      style="margin:0;">
+                    <button type="submit"
+                            style="width:100%;padding:9px 20px;background:#f8f9fa;color:#dc3545;border:1px solid #dc3545;border-radius:8px;font-weight:bold;font-size:13px;cursor:pointer;">
+                        Deconectare
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @* ── Secțiunea Colete ── *@
+    <div style="background:#fff;border-radius:12px;border:1px solid #eee;box-shadow:0 2px 10px rgba(0,0,0,.05);overflow:hidden;">
+
+        @* Header tabel *@
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #f0f0f0;">
+            <h3 style="margin:0;font-size:16px;font-weight:800;color:#212529;">
+                @(esteAdmin ? "📦 Ultimele Colete (toate)" : "📦 Coletele Mele Recente")
+            </h3>
+            <a asp-controller="Colete" asp-action="Index"
+               style="font-size:13px;color:#d99a00;text-decoration:none;font-weight:bold;">
+                @(esteAdmin ? "Toate Coletele →" : "Istoric complet →")
+            </a>
+        </div>
+
+        @if (!colete.Any())
+        {
+            <div style="text-align:center;padding:40px 20px;color:#aaa;">
+                <div style="font-size:36px;margin-bottom:10px;">📭</div>
+                <p style="margin:0;font-size:14px;">
+                    @(esteAdmin ? "Nu există colete în sistem." : "Nu ai niciun colet înregistrat încă.")
+                </p>
+                @if (!esteAdmin)
+                {
+                    <a asp-controller="Colete" asp-action="Create"
+                       style="display:inline-block;margin-top:15px;padding:8px 20px;background:#212529;color:#FFC107;border-radius:6px;text-decoration:none;font-size:13px;font-weight:bold;">
+                        🚀 Expediază primul colet
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#f8f9fa;">
+                        <th style="padding:12px 24px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">AWB</th>
+                        <th style="padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Tip</th>
+                        <th style="padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Zonă</th>
+                        <th style="padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Status</th>
+                        <th style="padding:12px 16px;text-align:right;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Cost</th>
+                        <th style="padding:12px 24px;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in colete)
+                    {
+                        var status = c.Comanda?.Status ?? "—";
+                        var badgeColor = status switch
+                        {
+                            "Înregistrată" => "#FFC107",
+                            "În tranzit"   => "#17a2b8",
+                            "Livrată"      => "#28a745",
+                            "Returnată"    => "#dc3545",
+                            _ => "#6c757d"
+                        };
+                        var textColor = badgeColor == "#FFC107" ? "#212529" : "#fff";
+
+                        <tr style="border-top:1px solid #f0f0f0;"
+                            onmouseover="this.style.background='#fffef5'"
+                            onmouseout="this.style.background='transparent'">
+                            <td style="padding:12px 24px;font-family:monospace;font-weight:700;font-size:13px;color:#212529;">@c.Awb</td>
+                            <td style="padding:12px 16px;font-size:13px;color:#555;">@c.Tip</td>
+                            <td style="padding:12px 16px;font-size:13px;color:#555;">@c.ZonaLivrare</td>
+                            <td style="padding:12px 16px;">
+                                <span style="background:@badgeColor;color:@textColor;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700;">@status</span>
+                            </td>
+                            <td style="padding:12px 16px;text-align:right;font-weight:700;color:#d99a00;">@c.CostLivrare.ToString("F2") RON</td>
+                            <td style="padding:12px 24px;text-align:center;">
+                                <a asp-controller="Colete" asp-action="Details" asp-route-id="@c.Id_colet"
+                                   style="font-size:12px;color:#555;text-decoration:none;border:1px solid #ddd;padding:3px 10px;border-radius:5px;">
+                                    Detalii
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    @* ── Secțiunea Adrese (doar pentru utilizatori normali) ── *@
+    @if (!esteAdmin)
+    {
+    <div style="background:#fff;border-radius:12px;border:1px solid #eee;box-shadow:0 2px 10px rgba(0,0,0,.05);overflow:hidden;margin-top:30px;">
+
+        @* Header *@
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #f0f0f0;">
+            <h3 style="margin:0;font-size:16px;font-weight:800;color:#212529;">📍 Adresele Mele</h3>
+            <a asp-controller="Adrese" asp-action="Create"
+               style="font-size:13px;color:#fff;background:#212529;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:bold;">
+                + Adaugă adresă
+            </a>
+        </div>
+
+        @if (!adrese.Any())
+        {
+            <div style="text-align:center;padding:40px 20px;color:#aaa;">
+                <div style="font-size:36px;margin-bottom:10px;">📭</div>
+                <p style="margin:0;font-size:14px;">Nu ai nicio adresă salvată încă.</p>
+                <a asp-controller="Adrese" asp-action="Create"
+                   style="display:inline-block;margin-top:15px;padding:8px 20px;background:#212529;color:#FFC107;border-radius:6px;text-decoration:none;font-size:13px;font-weight:bold;">
+                    📍 Adaugă prima adresă
+                </a>
+            </div>
+        }
+        else
+        {
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr style="background:#f8f9fa;">
+                        <th style="padding:12px 24px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Județ / Localitate</th>
+                        <th style="padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Stradă / Nr.</th>
+                        <th style="padding:12px 16px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Țară</th>
+                        <th style="padding:12px 24px;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;font-weight:700;">Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var a in adrese)
+                    {
+                        <tr style="border-top:1px solid #f0f0f0;"
+                            onmouseover="this.style.background='#fffef5'"
+                            onmouseout="this.style.background='transparent'">
+                            <td style="padding:12px 24px;font-size:13px;color:#212529;font-weight:600;">@a.Judet, @a.Localitate</td>
+                            <td style="padding:12px 16px;font-size:13px;color:#555;">Str. @a.Strada, Nr. @a.Numar</td>
+                            <td style="padding:12px 16px;font-size:13px;color:#555;">@a.Tara</td>
+                            <td style="padding:12px 24px;text-align:center;">
+                                <a asp-controller="Adrese" asp-action="Edit" asp-route-id="@a.Id_adresa"
+                                   style="font-size:12px;color:#fff;background:#495057;text-decoration:none;border-radius:5px;padding:4px 10px;margin-right:4px;">
+                                    ✏️ Editează
+                                </a>
+                                <a asp-controller="Adrese" asp-action="Delete" asp-route-id="@a.Id_adresa"
+                                   style="font-size:12px;color:#fff;background:#dc3545;text-decoration:none;border-radius:5px;padding:4px 10px;">
+                                    🗑️ Șterge
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    }
+
+</div>

@@ -1,0 +1,136 @@
+@model IEnumerable<FirmaCurierat.Controllers.UtilizatorViewModel>
+
+@{
+    ViewData["Title"] = "Gestionare Utilizatori";
+}
+
+<div style="max-width:1200px;margin:40px auto;padding:0 20px;">
+
+    @* ── Header ── *@
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:15px;">
+        <div>
+            <h2 style="margin:0;font-size:26px;font-weight:900;color:#212529;">👥 Utilizatori Înregistrați</h2>
+            <p style="margin:4px 0 0;color:#888;font-size:14px;">@Model.Count() cont(uri) în sistem</p>
+        </div>
+        <a asp-action="Create"
+           style="background:#212529;color:#FFC107;padding:10px 22px;border-radius:8px;font-weight:700;text-decoration:none;font-size:14px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;"
+           onmouseover="this.style.background='#FFC107';this.style.color='#212529';"
+           onmouseout="this.style.background='#212529';this.style.color='#FFC107';">
+            ➕ Adaugă Utilizator
+        </a>
+    </div>
+
+    @* ── Mesaje ── *@
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div style="background:#d4edda;color:#155724;padding:12px 18px;border-radius:8px;margin-bottom:20px;border:1px solid #c3e6cb;">
+            ✅ @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["Eroare"] != null)
+    {
+        <div style="background:#f8d7da;color:#721c24;padding:12px 18px;border-radius:8px;margin-bottom:20px;border:1px solid #f5c6cb;">
+            ⚠️ @TempData["Eroare"]
+        </div>
+    }
+
+    @* ── Tabel ── *@
+    <div style="background:#fff;border-radius:12px;border:1px solid #eee;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+        <table style="width:100%;border-collapse:collapse;">
+            <thead>
+                <tr style="background:#212529;color:#fff;">
+                    <th style="padding:14px 20px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Utilizator</th>
+                    <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Email</th>
+                    <th style="padding:14px 16px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Telefon</th>
+                    <th style="padding:14px 16px;text-align:center;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Rol</th>
+                    <th style="padding:14px 20px;text-align:center;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Acțiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model)
+                {
+                    var esteAdmin = u.Rol == "Admin";
+
+                    <tr style="border-bottom:1px solid #f0f0f0;"
+                        onmouseover="this.style.background='#fffef5'"
+                        onmouseout="this.style.background='#fff'">
+
+                        @* Nume + Prenume *@
+                        <td style="padding:14px 20px;">
+                            <div style="font-weight:700;color:#212529;font-size:15px;">
+                                @(string.IsNullOrWhiteSpace(u.Prenume) && string.IsNullOrWhiteSpace(u.Nume)
+                                    ? "—"
+                                    : $"{u.Prenume} {u.Nume}".Trim())
+                            </div>
+                        </td>
+
+                        @* Email *@
+                        <td style="padding:14px 16px;color:#555;font-size:14px;">@u.Email</td>
+
+                        @* Telefon *@
+                        <td style="padding:14px 16px;color:#555;font-size:14px;">
+                            @(string.IsNullOrWhiteSpace(u.Telefon) ? "—" : u.Telefon)
+                        </td>
+
+                        @* Rol badge *@
+                        <td style="padding:14px 16px;text-align:center;">
+                            @if (esteAdmin)
+                            {
+                                <span style="background:#FFC107;color:#212529;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:900;letter-spacing:1px;">⚙️ Admin</span>
+                            }
+                            else
+                            {
+                                <span style="background:#e9ecef;color:#495057;padding:4px 14px;border-radius:12px;font-size:12px;font-weight:600;">👤 User</span>
+                            }
+                        </td>
+
+                        @* Acțiuni *@
+                        <td style="padding:14px 20px;text-align:center;white-space:nowrap;">
+
+                            @* Editează *@
+                            <a asp-action="Edit" asp-route-id="@u.Id"
+                               style="display:inline-block;padding:5px 13px;background:#e6f2ff;color:#0d6efd;border-radius:5px;font-size:13px;font-weight:600;text-decoration:none;margin-right:5px;transition:all 0.2s;"
+                               onmouseover="this.style.background='#0d6efd';this.style.color='#fff';"
+                               onmouseout="this.style.background='#e6f2ff';this.style.color='#0d6efd';">
+                                ✏️ Edit
+                            </a>
+
+                            @* Schimbă rol *@
+                            <form asp-action="SetRol" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="userId" value="@u.Id" />
+                                <input type="hidden" name="rolNou" value="@(esteAdmin ? "User" : "Admin")" />
+                                <button type="submit"
+                                        onclick="return confirm('Schimbi rolul acestui utilizator?')"
+                                        style="padding:5px 13px;background:@(esteAdmin ? "#6c757d" : "#fff3cd");color:@(esteAdmin ? "#fff" : "#856404");border:1px solid @(esteAdmin ? "#6c757d" : "#ffc107");border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;margin-right:5px;transition:all 0.2s;">
+                                    @(esteAdmin ? "↓ → User" : "↑ → Admin")
+                                </button>
+                            </form>
+
+                            @* Șterge *@
+                            <form asp-action="Delete" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="userId" value="@u.Id" />
+                                <button type="submit"
+                                        onclick="return confirm('Ești sigur că vrei să ștergi contul @u.Email? Acțiunea este ireversibilă.')"
+                                        style="padding:5px 11px;background:#fde8e9;color:#dc3545;border:1px solid #f5c6cb;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;"
+                                        onmouseover="this.style.background='#dc3545';this.style.color='#fff';"
+                                        onmouseout="this.style.background='#fde8e9';this.style.color='#dc3545';">
+                                    🗑️
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (!Model.Any())
+        {
+            <div style="text-align:center;padding:40px;color:#aaa;font-size:15px;">
+                Nu există utilizatori înregistrați.
+            </div>
+        }
+    </div>
+</div>

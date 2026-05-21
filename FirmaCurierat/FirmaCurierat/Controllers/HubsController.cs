@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using FirmaCurierat.Models;
 using FirmaCurierat.Services;
@@ -25,6 +26,7 @@ namespace FirmaCurierat.Controllers
             return View(hubs);
         }
         // GET: Hubs/Details/5 (Afiseaza detaliile unui singur Hub)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -36,6 +38,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Hubs/Create (Afiseaza formularul gol pentru a adauga un Hub nou)
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -44,6 +47,7 @@ namespace FirmaCurierat.Controllers
         // POST: Hubs/Create (Primeste datele din formular si le salveaza)
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id_hub,Oras,Capacitate,Id_adresa")] Hub hub)
         {
             if (ModelState.IsValid)
@@ -56,6 +60,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Hubs/Edit/5 (incarcă datele unui Hub existent pentru a fi modificate)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -69,6 +74,7 @@ namespace FirmaCurierat.Controllers
         // POST: Hubs/Edit/5 (Salveaza noile modificari)
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id_hub,Oras,Capacitate,Id_adresa")] Hub hub)
         {
             if (id != hub.Id_hub) return NotFound();
@@ -82,6 +88,7 @@ namespace FirmaCurierat.Controllers
         }
 
         // GET: Hubs/Delete/5 (Afisează o pagina de confirmare a stergerii)
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -95,6 +102,7 @@ namespace FirmaCurierat.Controllers
         // POST: Hubs/Delete/5 (Executa stergerea definitiva)
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _hubService.DeleteHubAsync(id);

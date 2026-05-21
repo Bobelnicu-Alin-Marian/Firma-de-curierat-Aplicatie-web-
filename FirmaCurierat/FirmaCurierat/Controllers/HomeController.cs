@@ -10,10 +10,6 @@ namespace FirmaCurierat.Controllers
         {
             return View();
         }
-        public IActionResult Profil()
-        {
-            return View();
-        }
 
         public IActionResult Privacy()
         {

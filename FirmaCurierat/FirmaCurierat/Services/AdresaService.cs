@@ -15,8 +15,13 @@ namespace FirmaCurierat.Services
         public async Task<IEnumerable<Adresa>> GetAdreseByClientIdAsync(int idClient)
         {
             var toateAdresele = await _repository.GetAllAsync();
-            // Filtram doar adresele care apartin acestui client
             return toateAdresele.Where(a => a.Id_client == idClient).ToList();
+        }
+
+        public async Task<IEnumerable<Adresa>> GetAdreseByUserIdAsync(string userId)
+        {
+            var toateAdresele = await _repository.GetAllAsync();
+            return toateAdresele.Where(a => a.ApplicationUserId == userId).ToList();
         }
 
         public async Task<Adresa> GetAdresaByIdAsync(int id) => await _repository.GetByIdAsync(id);

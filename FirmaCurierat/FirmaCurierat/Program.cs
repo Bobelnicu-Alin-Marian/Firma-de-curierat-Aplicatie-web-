@@ -18,7 +18,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<FirmaCurieratContext>();
 
-// === AICI SUNT CONSTRÂNGERILE EXACTE DIN DOCUMENTUL PROFESORULUI ===
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Password settings
@@ -37,7 +36,7 @@ builder.Services.Configure<IdentityOptions>(options =>
     // User settings
     options.User.RequireUniqueEmail = true;
 });
-// ====================================================================
+
 
 builder.Services.AddScoped<FirmaCurierat.Services.IColetService, FirmaCurierat.Services.ColetService>();
 builder.Services.AddScoped(typeof(FirmaCurierat.Repositories.IRepository<>), typeof(FirmaCurierat.Repositories.GenericRepository<>));
@@ -47,11 +46,53 @@ builder.Services.AddScoped<IStatusLivrareService, StatusLivrareService>();
 builder.Services.AddScoped<IAdresaService, AdresaService>();
 builder.Services.AddScoped<IContactService, ContactService>();
 
-// === AICI ÎNREGISTRĂM NOUL SERVICIU DE AUTENTIFICARE (PENTRU CELE 3 PUNCTE) ===
+
 builder.Services.AddScoped<IAuthService, AuthService>();
-// ===============================================================================
+builder.Services.AddScoped<IProfilService, ProfilService>();
+builder.Services.AddScoped<IExpediereService, ExpediereService>();
+
 
 var app = builder.Build();
+
+// ── Seed roluri și utilizator Admin ─────────────────────────────────────
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+
+    foreach (var rol in new[] { "Admin", "User" })
+    {
+        if (!await roleManager.RoleExistsAsync(rol))
+            await roleManager.CreateAsync(new IdentityRole(rol));
+    }
+
+  
+    const string adminEmail = "admin@curierat.ro";
+    const string adminPassword = "Admin123!";
+
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        adminUser = new ApplicationUser
+        {
+            UserName         = adminEmail,
+            Email            = adminEmail,
+            EmailConfirmed   = true,
+            Nume             = "Administrator",
+            Prenume          = "Super"
+        };
+        await userManager.CreateAsync(adminUser, adminPassword);
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+    }
+
+    // Utilizatorii existenți fără niciun rol primesc automat rolul "User"
+    foreach (var user in userManager.Users.ToList())
+    {
+        if (!(await userManager.GetRolesAsync(user)).Any())
+            await userManager.AddToRoleAsync(user, "User");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

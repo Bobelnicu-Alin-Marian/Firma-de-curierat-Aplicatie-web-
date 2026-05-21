@@ -18,7 +18,10 @@ namespace FirmaCurierat.Models
         public int? Id_client { get; set; }
 
         [ForeignKey("Id_client")]
-        public Client Client { get; set; }
+        public Client? Client { get; set; }
+
+        // Legătură directă cu utilizatorul Identity logat
+        public string? ApplicationUserId { get; set; }
 
      
        // public int? Id_hub { get; set; }

@@ -189,11 +189,12 @@
         <p>Prețuri transparente, fără costuri ascunse. Alege opțiunea potrivită pentru tine.</p>
     </div>
 
-    <div style="text-align: right; margin-bottom: 20px;">
-        <a asp-action="Create" class="btn-add">
-            ➕ Adaugă Tarif Nou
-        </a>
-    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div style="text-align: right; margin-bottom: 20px;">
+            <a asp-action="Create" class="btn-add">➕ Adaugă Tarif Nou</a>
+        </div>
+    }
 
     <div class="table-container">
         <table class="custom-table">
@@ -203,7 +204,10 @@
                     <th style="text-align: center;">Local <br><small>(București/Ilfov)</small></th>
                     <th style="text-align: center;">Național <br><small>(România)</small></th>
                     <th style="text-align: center;">Internațional <br><small>(UE)</small></th>
-                    <th style="text-align: right; padding-right: 20px;">Acțiuni</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th style="text-align: right; padding-right: 20px;">Acțiuni</th>
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -216,9 +220,12 @@
                         <td style="text-align: center; font-weight: 600;">@item.PretInternational <small class="text-muted">RON</small></td>
                         
                         <td style="text-align: right;">
-                            <a asp-action="Edit" asp-route-id="@item.Id_tarif" class="action-btn btn-edit">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id_tarif" class="action-btn btn-details">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id_tarif" class="action-btn btn-delete">Delete</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.Id_tarif" class="action-btn btn-edit">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id_tarif" class="action-btn btn-details">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id_tarif" class="action-btn btn-delete">Delete</a>
+                            }
                         </td>
                     </tr>
                 }
@@ -231,35 +238,68 @@
     </div>
 
     <div class="calculator-widget">
-        <h4 style="margin-top: 0; margin-bottom: 5px; color: #212529; font-weight: 800; font-size: 22px;">🧮 Estimare rapidă de cost</h4>
-        <p style="color: #6c757d; font-size: 15px; margin-bottom: 30px;">Introdu datele coletului tău pentru o estimare instantanee (bazată pe greutate).</p>
+        <h4 style="margin-top:0; margin-bottom:5px; color:#212529; font-weight:800; font-size:22px;">🧮 Calculator Estimare Cost</h4>
+        <p style="color:#6c757d; font-size:15px; margin-bottom:30px;">
+            Selectează tipul coletului și zona de destinație pentru a obține prețul exact din grila noastră de tarife.
+        </p>
 
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end;">
-            
-            <div style="flex: 1; min-width: 200px;">
-                <label class="form-label">Zonă Destinație</label>
-                <select id="zona" class="form-input">
-                    <option value="local">Local (București/Ilfov)</option>
-                    <option value="national">Național (România)</option>
-                    <option value="international">Internațional (UE)</option>
+        <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+
+            <div style="flex:1; min-width:220px;">
+                <label class="form-label">📦 Tip / Categorie Colet</label>
+                <select id="categorie" class="form-input">
+                    <option value="">— Selectează categoria —</option>
                 </select>
             </div>
 
-            <div style="flex: 1; min-width: 150px;">
-                <label class="form-label">Greutate (kg)</label>
-                <input type="number" id="greutate" class="form-input" placeholder="Ex: 5" min="0.1" step="0.1">
+            <div style="flex:1; min-width:220px;">
+                <label class="form-label">📍 Zonă Destinație</label>
+                <select id="zona" class="form-input">
+                    <option value="">— Selectează zona —</option>
+                    <option value="local">🏙️ Local (București / Ilfov)</option>
+                    <option value="national">🇷🇴 Național (România)</option>
+                    <option value="international">🌍 Internațional (UE)</option>
+                </select>
             </div>
 
-            <div style="flex: 1; min-width: 150px;">
+            <div style="flex:0 0 auto; min-width:180px;">
                 <button type="button" onclick="calculeazaCost()" class="btn-calculate">
-                    CALCULEAZĂ COST
+                    CALCULEAZĂ
                 </button>
             </div>
         </div>
 
         <div id="rezultat-box" class="result-box">
-            <h3 style="margin: 0; color: #212529; font-size: 24px;">Cost Estimativ: <span id="pret-final" style="color: #d99a00; font-weight: 800; font-size: 32px;">0</span> RON</h3>
-            <p style="margin: 8px 0 0 0; color: #888; font-size: 13px;">*Aceasta este doar o estimare. Costul final va fi generat la plasarea comenzii.</p>
+            <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-bottom:20px;">
+
+                <div style="text-align:center;">
+                    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#999; margin-bottom:6px;">Cost Expediere</div>
+                    <div style="font-size:42px; font-weight:900; color:#d99a00; line-height:1;">
+                        <span id="pret-final">0</span>
+                        <span style="font-size:18px; font-weight:600; color:#555;">RON</span>
+                    </div>
+                    <div style="font-size:12px; color:#aaa; margin-top:4px;">TVA inclus</div>
+                </div>
+
+                <div style="text-align:center;">
+                    <div style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#999; margin-bottom:6px;">Timp Estimat Livrare</div>
+                    <div style="font-size:28px; font-weight:800; color:#212529; line-height:1;" id="timp-livrare">—</div>
+                    <div style="font-size:12px; color:#aaa; margin-top:4px;">zile lucrătoare</div>
+                </div>
+
+            </div>
+
+            <div id="detalii-tarif" style="background:#f8f9fa; border-radius:8px; padding:14px 20px; font-size:14px; color:#555; text-align:left; margin-bottom:16px;"></div>
+
+            <a asp-controller="Colete" asp-action="Create"
+               style="display:inline-block; padding:12px 35px; background:#212529; color:#FFC107; border-radius:8px; font-weight:bold; text-decoration:none; font-size:15px; transition:background 0.3s;"
+               onmouseover="this.style.background='#343a40'" onmouseout="this.style.background='#212529'">
+                Creează Expediere →
+            </a>
+
+            <p style="margin:12px 0 0; color:#aaa; font-size:12px;">
+                * Prețul afișat provine direct din grila de tarife. Costul final poate varia în funcție de servicii suplimentare (asigurare, ramburs etc.).
+            </p>
         </div>
     </div>
 
@@ -267,44 +307,75 @@
 
 @section Scripts {
     <script>
-        function calculeazaCost() {
-            const zona = document.getElementById('zona').value;
-            const greutateInput = document.getElementById('greutate').value;
-            const divRezultat = document.getElementById('rezultat-box');
-            const spanPret = document.getElementById('pret-final');
+        // Tarifele din baza de date, serializate direct in pagina
+        const tarife = @Html.Raw(
+            System.Text.Json.JsonSerializer.Serialize(
+                Model.Select(t => new {
+                    categorie  = t.CategorieGreutate,
+                    local      = t.PretLocal,
+                    national   = t.PretNational,
+                    international = t.PretInternational
+                })
+            )
+        );
 
-            const greutate = parseFloat(greutateInput);
-            if (isNaN(greutate) || greutate <= 0) {
-                alert("Te rugăm să introduci o greutate validă (ex: 1.5)!");
+        // Populam dropdown-ul cu categoriile din DB
+        const selectCategorie = document.getElementById('categorie');
+        tarife.forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t.categorie;
+            opt.textContent = t.categorie;
+            selectCategorie.appendChild(opt);
+        });
+
+        const timpLivrare = {
+            local:         '1',
+            national:      '2 – 3',
+            international: '5 – 10'
+        };
+
+        const zonaLabel = {
+            local:         'Local (București / Ilfov)',
+            national:      'Național (România)',
+            international: 'Internațional (UE)'
+        };
+
+        function calculeazaCost() {
+            const categorieVal = document.getElementById('categorie').value;
+            const zonaVal      = document.getElementById('zona').value;
+
+            if (!categorieVal) {
+                alert('Te rugăm să selectezi tipul / categoria coletului!');
+                return;
+            }
+            if (!zonaVal) {
+                alert('Te rugăm să selectezi zona de destinație!');
                 return;
             }
 
-            let cost = 0;
-
-            if (zona === 'local') {
-                if (greutate <= 1) cost = 15;
-                else if (greutate <= 5) cost = 20;
-                else if (greutate <= 15) cost = 30;
-                else if (greutate <= 30) cost = 50;
-                else cost = 50 + Math.ceil(greutate - 30) * 2; 
-            }
-            else if (zona === 'national') {
-                if (greutate <= 1) cost = 20;
-                else if (greutate <= 5) cost = 30;
-                else if (greutate <= 15) cost = 45;
-                else if (greutate <= 30) cost = 75;
-                else cost = 75 + Math.ceil(greutate - 30) * 3; 
-            }
-            else if (zona === 'international') {
-                if (greutate <= 1) cost = 80;
-                else if (greutate <= 5) cost = 120;
-                else if (greutate <= 15) cost = 180;
-                else if (greutate <= 30) cost = 250;
-                else cost = 250 + Math.ceil(greutate - 30) * 10; 
+            const tarif = tarife.find(t => t.categorie === categorieVal);
+            if (!tarif) {
+                alert('Tariful pentru această categorie nu a fost găsit.');
+                return;
             }
 
-            spanPret.innerText = cost.toFixed(2); 
-            divRezultat.style.display = 'block'; 
+            const pret = zonaVal === 'local'
+                ? tarif.local
+                : zonaVal === 'national'
+                    ? tarif.national
+                    : tarif.international;
+
+            document.getElementById('pret-final').textContent  = parseFloat(pret).toFixed(2);
+            document.getElementById('timp-livrare').textContent = timpLivrare[zonaVal];
+
+            document.getElementById('detalii-tarif').innerHTML =
+                `<strong>Categorie:</strong> ${tarif.categorie} &nbsp;|&nbsp; ` +
+                `<strong>Zonă:</strong> ${zonaLabel[zonaVal]} &nbsp;|&nbsp; ` +
+                `<strong>Preț Local:</strong> ${parseFloat(tarif.local).toFixed(2)} RON &nbsp;|&nbsp; ` +
+                `<strong>Preț Național:</strong> ${parseFloat(tarif.national).toFixed(2)} RON &nbsp;|&nbsp; ` +
+                `<strong>Preț Internațional:</strong> ${parseFloat(tarif.international).toFixed(2)} RON`;
+
+            document.getElementById('rezultat-box').style.display = 'block';
         }
     </script>
 }

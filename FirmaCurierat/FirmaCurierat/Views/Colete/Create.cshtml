@@ -1,104 +1,211 @@
-﻿@model FirmaCurierat.Models.Colet
+@model FirmaCurierat.Models.ViewModels.CreareColetViewModel
+
+@{
+    ViewData["Title"] = "Expediază Colet";
+}
 
 <main>
     <section class="shipping-section">
         <h2>Expediază un colet nou</h2>
         <p class="subtitle">Completează datele de mai jos pentru a genera un AWB.</p>
-        
+
         @if (TempData["SuccessMessage"] != null)
         {
-            <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+            <div class="alert alert-success" style="background:#d4edda;color:#155724;padding:15px;border-radius:5px;margin-bottom:20px;border:1px solid #c3e6cb;">
                 <strong>Succes!</strong> @TempData["SuccessMessage"]
             </div>
         }
-        
+
         <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" style="color:red;"></div>
+            <div asp-validation-summary="ModelOnly" style="color:red;margin-bottom:15px;"></div>
 
             <div class="form-grid">
-                <fieldset>
-                    <legend>Date Expeditor</legend>
+
+                @* ── EXPEDITOR ── *@
+                <fieldset style="background:#fffef5;">
+                    <legend>📤 Date Expeditor</legend>
+                    <p style="font-size:13px;color:#888;margin-bottom:15px;">
+                        Datele tale sunt preluate automat din profil.
+                    </p>
+
+                    <input type="hidden" asp-for="ExpeditorNume" />
+                    <input type="hidden" asp-for="ExpeditorPrenume" />
+                    <input type="hidden" asp-for="ExpeditorTelefon" />
+
                     <div class="form-group">
-                        <label>Nume complet / Companie</label>
-                        <input type="text" placeholder="Ex: Popescu Ion">
+                        <label>Nume complet</label>
+                        <input type="text" class="form-control" readonly
+                               value="@(Model.ExpeditorPrenume + " " + Model.ExpeditorNume)"
+                               style="background:#f0f0f0;cursor:not-allowed;" />
                     </div>
                     <div class="form-group">
                         <label>Telefon</label>
-                        <input type="tel" placeholder="07XX XXX XXX">
+                        <input type="text" class="form-control" readonly
+                               value="@(Model.ExpeditorTelefon ?? "Necompletat — editează profilul")"
+                               style="background:#f0f0f0;cursor:not-allowed;" />
                     </div>
+                    <p style="font-size:12px;color:#999;margin-top:4px;">
+                        <a asp-controller="Profil" asp-action="Editeaza" style="color:#d99a00;">
+                            Actualizează datele în profil →
+                        </a>
+                    </p>
+
+                    <hr style="margin:18px 0;" />
+                    <p style="font-weight:bold;font-size:14px;color:#444;margin-bottom:10px;">📍 Adresă ridicare</p>
+
                     <div class="form-group">
-                        <label>Adresă completă de ridicare</label>
-                        <textarea rows="3" placeholder="Strada, Număr, Oraș, Județ"></textarea>
+                        <label asp-for="RidicareTara"></label>
+                        <input asp-for="RidicareTara" class="form-control" />
+                        <span asp-validation-for="RidicareTara" class="text-danger"></span>
+                    </div>
+
+                    <div style="display:flex;gap:15px;">
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="RidcareJudet"></label>
+                            <input asp-for="RidcareJudet" class="form-control" placeholder="ex: Ilfov" />
+                            <span asp-validation-for="RidcareJudet" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="RidcareLocalitate"></label>
+                            <input asp-for="RidcareLocalitate" class="form-control" placeholder="ex: Voluntari" />
+                            <span asp-validation-for="RidcareLocalitate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:15px;">
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="RidcareStrada"></label>
+                            <input asp-for="RidcareStrada" class="form-control" placeholder="ex: Str. Florilor" />
+                            <span asp-validation-for="RidcareStrada" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="flex:0 0 90px;">
+                            <label asp-for="RidcareNumar"></label>
+                            <input asp-for="RidcareNumar" class="form-control" placeholder="12A" />
+                            <span asp-validation-for="RidcareNumar" class="text-danger"></span>
+                        </div>
                     </div>
                 </fieldset>
 
+                @* ── DESTINATAR ── *@
                 <fieldset>
-                    <legend>Date Destinatar</legend>
+                    <legend>📥 Date Destinatar</legend>
+
                     <div class="form-group">
-                        <label>Nume complet / Companie</label>
-                        <input type="text" placeholder="Ex: Ionescu Maria">
+                        <label asp-for="DestinatarPrenume"></label>
+                        <input asp-for="DestinatarPrenume" class="form-control" placeholder="ex: Maria" />
+                        <span asp-validation-for="DestinatarPrenume" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label>Telefon</label>
-                        <input type="tel" placeholder="07XX XXX XXX">
+                        <label asp-for="DestinatarNume"></label>
+                        <input asp-for="DestinatarNume" class="form-control" placeholder="ex: Ionescu" />
+                        <span asp-validation-for="DestinatarNume" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label>Adresă completă de livrare</label>
-                        <textarea rows="3" placeholder="Strada, Număr, Oraș, Județ"></textarea>
+                        <label asp-for="DestinatarTelefon"></label>
+                        <input asp-for="DestinatarTelefon" class="form-control" placeholder="ex: 0722 123 456" />
+                        <span asp-validation-for="DestinatarTelefon" class="text-danger"></span>
+                    </div>
+
+                    <hr style="margin:18px 0;" />
+                    <p style="font-weight:bold;font-size:14px;color:#444;margin-bottom:10px;">📍 Adresă livrare</p>
+
+                    <div class="form-group">
+                        <label asp-for="LivrareTara"></label>
+                        <input asp-for="LivrareTara" class="form-control" />
+                        <span asp-validation-for="LivrareTara" class="text-danger"></span>
+                    </div>
+
+                    <div style="display:flex;gap:15px;">
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="LivrareJudet"></label>
+                            <input asp-for="LivrareJudet" class="form-control" placeholder="ex: Cluj" />
+                            <span asp-validation-for="LivrareJudet" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="LivrareLocalitate"></label>
+                            <input asp-for="LivrareLocalitate" class="form-control" placeholder="ex: Cluj-Napoca" />
+                            <span asp-validation-for="LivrareLocalitate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:15px;">
+                        <div class="form-group" style="flex:1;">
+                            <label asp-for="LivrareStrada"></label>
+                            <input asp-for="LivrareStrada" class="form-control" placeholder="ex: Str. Avram Iancu" />
+                            <span asp-validation-for="LivrareStrada" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" style="flex:0 0 90px;">
+                            <label asp-for="LivrareNumar"></label>
+                            <input asp-for="LivrareNumar" class="form-control" placeholder="5" />
+                            <span asp-validation-for="LivrareNumar" class="text-danger"></span>
+                        </div>
                     </div>
                 </fieldset>
             </div>
 
-            <fieldset class="parcel-details">
-                <legend>Detalii Colet</legend>
+            @* ── DETALII COLET ── *@
+            <fieldset class="parcel-details" style="margin-top:25px;">
+                <legend>📦 Detalii Colet</legend>
+
                 <div class="form-group">
                     <label>Număr AWB</label>
-                    <input type="text" class="form-control" value="Generat automat la salvare" readonly style="background-color: #eee; cursor: not-allowed;">
+                    <input type="text" class="form-control" readonly
+                           value="Generat automat la salvare"
+                           style="background:#eee;cursor:not-allowed;" />
                 </div>
-                
-                <div class="form-group" style="margin-top: 15px;">
-                    <label>Dimensiune Colet</label>
-                    <select asp-for="Dimensiune" class="form-control">
-                        <option value="S">S (Plic / Cutie mică)</option>
-                        <option value="M" selected>M (Cutie medie - Standard)</option>
-                        <option value="L">L (Cutie mare / Voluminos)</option>
-                        <option value="XL">XL (Palet / Agabaritic)</option>
-                    </select>
+
+                <div style="display:flex;gap:20px;margin-top:15px;flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1;min-width:160px;">
+                        <label asp-for="Tip"></label>
+                        <select asp-for="Tip" class="form-control">
+                            <option value="Plic">Plic (max 1 kg)</option>
+                            <option value="Standard">Colet Standard</option>
+                            <option value="Fragil">Colet Fragil</option>
+                            <option value="Voluminos">Colet Voluminos</option>
+                        </select>
+                        <span asp-validation-for="Tip" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" style="flex:1;min-width:160px;">
+                        <label asp-for="Dimensiune"></label>
+                        <select asp-for="Dimensiune" class="form-control">
+                            <option value="S">S — Plic / Cutie mică</option>
+                            <option value="M">M — Cutie medie (Standard)</option>
+                            <option value="L">L — Cutie mare / Voluminos</option>
+                            <option value="XL">XL — Palet / Agabaritic</option>
+                        </select>
+                    </div>
                 </div>
-                
-               
-                <div class="form-group-inline" style="display:flex; gap:20px; margin-top:15px;">
-                    <div class="form-group" style="flex:1;">
-                        <label>Zonă Livrare</label>
-                        <select asp-for="ZonaLivrare" class="form-control" required>
-                            <option value="">-- Alege --</option>
-                            <option value="Local">Local (București/Ilfov)</option>
+
+                <div style="display:flex;gap:20px;margin-top:15px;flex-wrap:wrap;">
+                    <div class="form-group" style="flex:2;min-width:180px;">
+                        <label asp-for="ZonaLivrare"></label>
+                        <select asp-for="ZonaLivrare" class="form-control">
+                            <option value="">— Alege zona —</option>
+                            <option value="Local">Local (București / Ilfov)</option>
                             <option value="National">Național (România)</option>
                             <option value="International">Internațional (UE)</option>
                         </select>
+                        <span asp-validation-for="ZonaLivrare" class="text-danger"></span>
                     </div>
-                    <div class="form-group" style="flex:1;">
-                        <label>Greutate (kg)</label>
-                        <input asp-for="Greutate" type="number" step="0.01" placeholder="Ex: 2" required>
+                    <div class="form-group" style="flex:1;min-width:120px;">
+                        <label asp-for="Greutate"></label>
+                        <input asp-for="Greutate" type="number" step="0.01" min="0.01"
+                               class="form-control" placeholder="ex: 2.5" />
+                        <span asp-validation-for="Greutate" class="text-danger"></span>
                     </div>
-                    <div class="form-group" style="flex:1;">
-                        <label>Pret (RON)</label>
-                        <input asp-for="Pret" type="number" step="0.01" placeholder="Ex: 250" value="0" required>
+                    <div class="form-group" style="flex:1;min-width:120px;">
+                        <label asp-for="Pret"></label>
+                        <input asp-for="Pret" type="number" step="0.01" min="0"
+                               class="form-control" placeholder="ex: 250" />
                     </div>
-                </div>
-
-                <div class="form-group" style="margin-top:15px;">
-                    <label>Tip trimitere</label>
-                    <select asp-for="Tip">
-                        <option value="Plic">Plic (max 1kg)</option>
-                        <option value="Standard" selected>Colet Standard</option>
-                        <option value="Fragil">Colet Fragil</option>
-                        <option value="Voluminos">Colet Voluminos</option>
-                    </select>
                 </div>
             </fieldset>
 
-            <button type="submit" class="btn-submit">Generează AWB</button>
+            <button type="submit" class="btn-submit">🚀 Generează AWB</button>
         </form>
     </section>
 </main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
